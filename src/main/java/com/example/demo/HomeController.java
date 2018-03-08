@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 @Controller
 public class HomeController {
-    ArrayList<Child> child = new ArrayList<>();
+    ArrayList<Child> children = new ArrayList<>();
 
     @GetMapping("/")
     public String children() {
@@ -19,12 +19,12 @@ public class HomeController {
     @GetMapping("/edit")
     public String rediger(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
         int børnID = 0;
-        for (int i = 0; i < child.size(); i++) {
-            if (child.get(i).getId() == id) {
+        for (int i = 0; i < children.size(); i++) {
+            if (children.get(i).getId() == id) {
                 børnID = i;
             }
         }
-        model.addAttribute("child", child.get(børnID));
+        model.addAttribute("child", children.get(børnID));
         return "edit";
     }
 }
