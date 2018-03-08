@@ -12,7 +12,7 @@
 <hr/>
 <form method="post"
       th:action="@{/opret}">
-    <label>Barns id: </label><input type="text" th:field="${child.id}"/><br/><br/>
+    <label>Barns id: </label><input type="text" th:field="${children.id}"/><br/><br/>
     <label>Fornavn: </label><input type="text" th:field="${children.firstName}"/><br/><br/>
     <label>Efternavn: </label><input type="text" th:field="${children.lastName}"/><br/><br/>
     <label>Forældre: </label><input type="text" th:field="${children.parents}"/><br/><br/>
@@ -24,9 +24,6 @@
     <label>Billede: </label><input type="text" th:field="${children.picture}"/><br/><br/>
     <input type="submit" value="Send"/>
 </form>
-
-</body>
-</html>
 
 </body>
 </html>
