@@ -24,9 +24,7 @@ public class Child {
         this.picture = picture;
     }
 
-    public void createChild(){
 
-    }
 
     public int getId() {
         return id;
