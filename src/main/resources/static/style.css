@@ -5,17 +5,26 @@
 
 }
 
-#boxstopmenu {
-    background-color: white;
-    width: 1280px;
-    height: 40px;
+#childinfo {
+    background-color: lightgrey;
+    border-style: solid;
+    width: 600px;
+    height:300px;
+    float: right;
+
 
 }
 
+#allergicinfo {
+    background-color: gray;
+    height: 50%;
+    width: 50%;
+    float: right;
+}
 #boxmiddel {
     background-color: gainsboro;
     height: 500px;
-    width: 1280px;
+    width: 200px;
     padding: 0px;
 }
 
@@ -35,11 +44,16 @@
 
 }
 
+#hovedmenu {
+    height: 30px;
+    width: 1280px;
+
+}
 
 
 input {
     display: block;
-    width: 25%;
+    width: 15%;
     padding: .5rem .75rem;
     font-size: 1rem;
     line-height: 1.25;
@@ -83,6 +97,19 @@ input {
 
 }
 
+.inputtilallergier{
+    display: block;
+    width: 15%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: black;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+
+}
 .tilbagetilBørn {
     background-color: white;
     border: none;
