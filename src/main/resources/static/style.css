@@ -1,8 +1,5 @@
 .body{
     background-color:lightgray;
-
-
-
 }
 
 #childinfo {
@@ -12,20 +9,18 @@
     height:300px;
     float: right;
 
-
 }
 
 #allergicinfo {
     background-color: gray;
     height: 50%;
     width: 50%;
-    float: right;
 }
+
 #boxmiddel {
     background-color: gainsboro;
     height: 500px;
     width: 200px;
-    padding: 0px;
 }
 
 #inboxs {
@@ -39,7 +34,7 @@
 #infoboks{
     background-color: gainsboro;
     height: 150px;
-    width: 1280px;
+    width: 100%;
     border-style: solid;
 
 }
@@ -126,3 +121,14 @@ input {
 
 }
 
+.opretBarn {
+    text-align: center;
+}
+
+div.forældre {
+    float: right;
+    height: 50%;
+    width: 50%;
+    background-color: gray;
+
+}

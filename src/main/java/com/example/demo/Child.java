@@ -14,6 +14,7 @@ public class Child {
     private String picture;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateOfBirth;
+    private int tlfNumber;
 
     public Child() {
     }
