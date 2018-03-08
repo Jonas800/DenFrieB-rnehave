@@ -10,6 +10,7 @@
 <body>
 <form method="post"
       th:action="@{/opret}">
+    <input type="text" th:field="${child.id}"/>
     <input type="text" th:field="${child.firstName}"/>
     <input type="text" th:field="${child.lastName}"/>
     <input type="text" th:field="${child.parents}"/>
