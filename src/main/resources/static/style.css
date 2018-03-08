@@ -1,3 +1,101 @@
-body{
-    background-color:red;
+.body{
+    background-color:lightgray;
+
+
+
 }
+
+#boxstopmenu {
+    background-color: white;
+    width: 1280px;
+    height: 40px;
+
+}
+
+#boxmiddel {
+    background-color: gainsboro;
+    height: 500px;
+    width: 1280px;
+    padding: 0px;
+}
+
+#inboxs {
+    color: gold;
+    height: 200px;
+    width: 100px;
+    border-style: solid;
+
+}
+
+#infoboks{
+    background-color: gainsboro;
+    height: 150px;
+    width: 1280px;
+    border-style: solid;
+
+}
+
+
+
+input {
+    display: block;
+    width: 25%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: black;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+}
+
+
+
+.hjemknap {
+    background-color: lightgray;
+    height: 30px;
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px white;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+}
+.knap {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #808788;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+
+}
+
+.tilbagetilBørn {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #808788;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+
+}
+
