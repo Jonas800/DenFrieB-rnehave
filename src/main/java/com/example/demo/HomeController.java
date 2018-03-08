@@ -1,42 +1,34 @@
 package com.example.demo;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 
+import java.util.*;
+import java.io.*;
 @Controller
-public class HomeController {
-    ArrayList<Child> children = new ArrayList<>();
-
+public class HomeController extends Child{
+    public static ArrayList<Parent> parents;
     @GetMapping("/")
-    public String children() {
+    public String children(){
         return "boern";
     }
 
-    @GetMapping("/edit")
-    public String rediger(int id, Model model) {
-        int børnID = 0;
-        for (int i = 0; i < children.size(); i++) {
-            if (children.get(i).getId() == id) {
-                børnID = i;
-            }
+    @PostMapping("boern")
+
+    public static void createChild(String firstName, String telephoneNumber, String type, int id, String lastName, String picture
+                     ,String Date, ArrayList<String> allergies) throws Exception{
+        PrintStream child = new PrintStream(new File("src/Child.dat"));
+        for(Parent index: parents){
+            parents.add(new Parent(firstName, lastName, Date, allergies.size(), picture));
+            child.print(parents);
+            child.close();
+
         }
-        model.addAttribute("child", children.get(børnID));
-        return "edit";
+
     }
 
-    @PostMapping("/edit")
-    public String rediger(@ModelAttribute Child child) {
-        for (int i = 0; i < children.size(); i++) {
-            if (child.getId() == children.get(i).getId()) {
-                children.set(i, child);
-            }
-        }
-        return "redirect:/";
-    }
+
+
 }

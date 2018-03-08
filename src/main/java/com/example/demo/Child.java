@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,23 +10,22 @@ public class Child {
     private String firstName;
     private String lastName;
     private ArrayList<Parent> parents;
-    private Date dateOfBirth;
     private ArrayList<String> allergies;
     private String picture;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date dateOfBirth;
 
-    public Child(){}
+    public Child() {
+    }
 
-    public Child(int id, String firstName, String lastName, ArrayList<Parent> parents, Date dateOfBirth, ArrayList<String> allergies, String picture) {
+    public Child(int id, String firstName, String lastName, ArrayList<Parent> parents, Date Date, ArrayList<String> allergies, String picture) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.parents = parents;
-        this.dateOfBirth = dateOfBirth;
+        this.dateOfBirth = Date;
         this.allergies = allergies;
         this.picture = picture;
-    }
-
-    public void createChild(){
 
     }
 
@@ -36,19 +37,19 @@ public class Child {
         this.id = id;
     }
 
-    public String getfirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setfirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getlastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setlastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -58,14 +59,6 @@ public class Child {
 
     public void setParents(ArrayList<Parent> parents) {
         this.parents = parents;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public ArrayList<String> getAllergies() {
@@ -83,4 +76,13 @@ public class Child {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
 }
