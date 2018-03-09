@@ -48,19 +48,18 @@
     <h3> Register barn</h3>
     <form method="Post" th:action="@{/boern}">
         <label>Billede</label>
-        <input id="image" type="file" name="profile_photo" placeholder="Photo" th:field="${children.picture}"> </input>
+        <input id="image" type="file" name="profile_photo" placeholder="Photo" th:field="${child.picture}"> </input>
         <label type="text">Fornavn:</label>
-        <input th:field="${children.firstName}"> </input>
+        <input th:field="${child.firstName}"> </input>
         <label>Efternavn: </label>
-        <input type="text" th:field="${children.lastName}"> </input>
+        <input type="text" th:field="${child.lastName}"> </input>
         <label>Fødselsdagsdato: </label>
-        <input type="date" type="date" th:field="${children.dateOfBirth}"> </input>
+        <input type="date" type="date" th:field="${child.dateOfBirth}"> </input>
         <label>Tlf:<br></label>
-        <input type="text" th:field="${children.tlfNumber}"> </input>
+        <input type="text" th:field="${child.tlfNumber}"> </input>
     </form>
     <br/>
-
-    <input type="submit" value="Opret nyt barn" class="opretBarn" onclick=""/>
+<input type="submit" value="Send"/>
 
     <br/>
 

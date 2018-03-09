@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,6 +10,7 @@ public class Child {
     private String firstName;
     private String lastName;
     private ArrayList<Parent> parents;
+    @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date dateOfBirth;
     private ArrayList<String> allergies;
     private String picture;

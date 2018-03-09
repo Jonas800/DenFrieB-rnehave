@@ -1,81 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
-    <link rel="stylesheet" href="../static/Style.css"/>
+    <meta charset="utf-8">
 
+    <title>Create Students</title>
+    <link rel="stylesheet" type="text/css" th:href="@{Style.css}" href="Style.css" />
 </head>
 <body>
-
-
-<div id="hovedmenu">
-    <button type="button" class="hjemknap" href> Roskilde Frie Børnehave</button>
-    <button type="button" class="knapper">Forside</button>
-    <button type="button" class="knapper">Om</button>
-    <button type="button" class="knapper">Kontakt</button>
-    <button type="button" class="knapper" >Børn</button>
-    <button type="button" class="knapper">Vagtplan</button>
-</div>
-
-<br/>
-
-<DIV id="childinfo">
-
-    <a type="button"  class="tilbagetilBørn" href="forside.html">Tilbage til børn</a>
-    <h3> Register barn</h3>
-
-
-    <h2> Register barn</h2>
-
-    <div class="forældre">
-        <p1>forældre:</p1>
-        <input placeholder="mor"> </input>
-        <input placeholder="far"> </input>
-    </div>
-
-    <div id="allergicinfo">
-        <label>Allergier</label>
-        <input> </input>
-        <input> </input>
-        <input> </input>
-    </div>
-
-</div>
-<div></div>
-<a type="button" class="tilbagetilBørn" href="forside.html">Tilbage til børn</a>
-
-<h3> Register barn</h3>
-<form method="Post" th:action="@{/boern}">
-    <label>Billede</label>
-    <input id="image" type="file" name="profile_photo" placeholder="Photo" th:field="${children.picture}"> </input>
-    <label type="text">Fornavn:</label>
-    <input th:field="${children.firstName}"> </input>
+<h1>Opret barn</h1>
+<form method="Post" th:action="@{/OpretBarn}">
+    <label>Barns id: </label>
+    <input type="text" th:field="${child.id}"/><br/><br/>
+    <label>Fornavn: </label>
+    <input type="text" th:field="${child.firstName}"/><br/><br/>
     <label>Efternavn: </label>
-    <input type="text" th:field="${children.lastName}"> </input>
+    <input type="text" th:field="${child.lastName}"/> <br/><br/>
+    <label>Forældre: </label>
+    <input type="text" th:field="${child.parents}"/><br/><br/>
+    <label>Forældre: </label>
+    <input type="text" th:field="${child.parents}"/><br/><br/>
     <label>Fødselsdagsdato: </label>
-    <input type="date" type="date" th:field="${children.dateOfBirth}"> </input>
-    <label>Tlf:<br></label>
-    <input type="text" th:field="${children.tlfNumber}"> </input>
+    <input type="text" th:field="${child.dateOfBirth}"/><br/><br/>
+    <label>Allergier: </label>
+    <input type="text" th:field="${child.allergies}"/><br/><br/>
+    <label>Allergier: </label>
+    <input type="text" th:field="${child.allergies}"/><br/><br/>
+    <label>Allergier: </label>
+    <input type="text" th:field="${child.allergies}"/><br/><br/>
+    <label>Billede: </label>
+    <br> <br/>
+    <input type="submit" value="Send"/>
 </form>
-<br/>
-
-<input type="submit" value="Opret nyt barn" class="opretBarn" onclick=""/>
-
-<br/>
-
-<div id="infoboks">
-    <p>Roskilde frie børnehave: <br></p>
-    <p>E-mail: RoskildeFrieBørnehave @outlook.com</p>
-    <p>Tlf. 26 26 26 26</p>
-    <p align=" middle">Adresse: adresse 00 0000 kommune</p>
-    <p align="right">Ansvarlig: Sandra Madsen </p>
-    <p align="right">E-mail: SandraMadsen@outlook.com</p>
-    <p align="right">Tlf. 27 27 27 27</p>
-</div>
-
-
-</a>
-
 </body>
 </html>
+
+
+
+

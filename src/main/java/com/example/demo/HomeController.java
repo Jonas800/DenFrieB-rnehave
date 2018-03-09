@@ -15,9 +15,6 @@ import java.io.*;
 public class HomeController extends Child {
     ArrayList<Child> children = new ArrayList<>();
 
-
-
-
     @GetMapping
     public String createChild(Model model) {
         model.addAttribute("child", new Child());
@@ -32,6 +29,7 @@ public class HomeController extends Child {
         child.setId(id);
         children.add(child);
         PrintStream print = new PrintStream(new File("child.txt"));
+
         String s = "";
         for (Child c : children) {
             s += c.toString() + "/r/n";
