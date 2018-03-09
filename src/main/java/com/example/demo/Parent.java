@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,17 +14,20 @@ public class Parent {
     private static ArrayList<Parent> parents;
     private static ArrayList<String> allergies;
     private String picture;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateOfBirth;
 
-    public Parent(String firstName, String telephoneNumber, String type, int id, String lastName) {
+    public Parent(int id, String firstName, String lastName, String telephoneNumber, String type, Date Date, ArrayList<String> allergies) {
+        this.id = id;
         this.firstName = firstName;
+        this.lastName = lastName;
         this.telephoneNumber = telephoneNumber;
         this.type = type;
-        this.id = id;
-        this.lastName = lastName;
         this.picture = picture;
         this.parents = parents;
         this.allergies = allergies;
+        this.dateOfBirth=Date;
+
     }
 
     public String getFirstName() {

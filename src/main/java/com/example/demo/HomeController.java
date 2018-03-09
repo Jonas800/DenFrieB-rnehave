@@ -12,23 +12,19 @@ public class HomeController extends Child{
     public static ArrayList<Parent> parents;
     @GetMapping("/")
     public String children(){
-        return "boern";
+        return "forside";
     }
 
-    @PostMapping("boern")
-
+    @PostMapping("forside")
     public static void createChild(String firstName, String telephoneNumber, String type, int id, String lastName, String picture
-                     ,String Date, ArrayList<String> allergies) throws Exception{
+            , Date Date, ArrayList<String> allergies) throws Exception {
         PrintStream child = new PrintStream(new File("src/Child.dat"));
-        for(Parent index: parents){
-            parents.add(new Parent(firstName, lastName, Date, allergies.size(), picture));
+        for (Parent index : parents) {
+            parents.add(new Parent(id, firstName, lastName, telephoneNumber, type, Date, allergies));
             child.print(parents);
             child.close();
-
         }
 
     }
-
-
 
 }
