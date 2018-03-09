@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" $
-      xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
     <title>Opret Barn</title>
-    <link rel="stylesheet"
-          href="style.css"/>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<form method="post"
-      th:action="@{/opret}">
-    <input type="text" th:field="${child.id}"/>
+<form method="post" th:action="@{/OpretBarn}">
+    <label>Fornavn</label>
     <input type="text" th:field="${child.firstName}"/>
+    <label>Efternavn</label>
     <input type="text" th:field="${child.lastName}"/>
-    <input type="text" th:field="${child.parents}"/>
-    <input type="text" th:field="${child.parents}"/>
-    <input type="text" th:field="${child.dateOfBirth}"/>
-    <input type="text" th:field="${child.allergies}"/>
-    <input type="text" th:field="${child.allergies}"/>
-    <input type="text" th:field="${child.allergies}"/>
-    <input type="text" th:field="${child.picture}"/>
     <input type="submit" value="Send"/>
 </form>
 
