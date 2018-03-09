@@ -101,5 +101,19 @@ public class Parent {
     public void setDateOfBirth(Date dateOfBirth){
         this.dateOfBirth = dateOfBirth;
     }
+
+
+    @Override
+    public String toString() {
+        return "Parent{" +
+                "firstName='" + firstName + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", type='" + type + '\'' +
+                ", id=" + id +
+                ", lastName='" + lastName + '\'' +
+                ", picture='" + picture + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                '}';
+    }
 }
 
