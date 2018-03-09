@@ -9,6 +9,7 @@ import java.util.*;
 import java.io.*;
 @Controller
 public class HomeController extends Child{
+    ArrayList<Child> children = new ArrayList<>();
     public static ArrayList<Parent> parents;
     @GetMapping("/")
     public String children(){
