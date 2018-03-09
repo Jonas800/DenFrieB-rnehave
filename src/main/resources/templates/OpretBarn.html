@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Create Students</title>
+    <title>opret Barn</title>
     <link rel="stylesheet" type="text/css" th:href="@{Style.css}" href="Style.css" />
 </head>
 <body>
+
 <h1>Opret barn</h1>
 <form method="Post" th:action="@{/OpretBarn}">
     <label>Barns id: </label>
@@ -28,8 +29,9 @@
     <label>Allergier: </label>
     <input type="text" th:field="${child.allergies}"/><br/><br/>
     <label>Billede: </label>
+    <input id="image" type="file" name="profile_photo" placeholder="Photo" th:field="${child.picture}"> </input>
     <br> <br/>
-    <input type="submit" value="Send"/>
+    <input type="submit" value="Send" class="knapper"/>
 </form>
 </body>
 </html>
