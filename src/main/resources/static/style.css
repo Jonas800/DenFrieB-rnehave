@@ -8,11 +8,8 @@
     width: 600px;
     height:300px;
     float: right;
-<<<<<<< HEAD
     position: relative;
     right: 10px;
-=======
->>>>>>> 5afc418fab05c4042901e8c261bc3d9bec79f9d3
 
 }
 
@@ -20,13 +17,10 @@
     background-color: lightgrey;
     height: 50%;
     width: 50%;
-<<<<<<< HEAD
     float: right ;
     right: 50px;
     top:-140px;
     position: relative;
-=======
->>>>>>> 5afc418fab05c4042901e8c261bc3d9bec79f9d3
 }
 
 #boxmiddel {
@@ -47,13 +41,10 @@
     background-color: gainsboro;
     border:2px;
     height: 150px;
-<<<<<<< HEAD
     width: 1280px;
     bottom: -50px;
     position: relative;
-=======
     width: 100%;
->>>>>>> 5afc418fab05c4042901e8c261bc3d9bec79f9d3
     border-style: solid;
     padding:10px;
     float: bottom;
