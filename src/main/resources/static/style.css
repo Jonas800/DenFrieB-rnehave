@@ -143,3 +143,20 @@ div.forældre {
     background-color: gray;
 
 }
+
+.loginknap{
+    background-color: lightseagreen;
+    border: none;
+    color: black;
+    position:absolute; top:10; right:0;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px #808788;
+    -webkit-transition-duration: 0.1s; /* Safari */
+    transition-duration: 0.1s;
+
+}
