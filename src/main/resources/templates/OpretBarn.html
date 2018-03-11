@@ -1,41 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-
-    <title>opret Barn</title>
-    <link rel="stylesheet" type="text/css" th:href="@{Style.css}" href="Style.css" />
+    <meta charset="UTF-8"/>
+    <title>tilmeld Barn</title>
+    <link rel="stylesheet" href="../static/style.css"/>
 </head>
 <body>
-
-<h1>Opret barn</h1>
+<h1>Opret Barn</h1>
 <form method="Post" th:action="@{/OpretBarn}">
-    <label>Barns id: </label>
-    <input type="text" th:field="${child.id}"/><br/><br/>
     <label>Fornavn: </label>
-    <input type="text" th:field="${child.firstName}"/><br/><br/>
+    <input type="text" th:field="${child.firstName}" required="true"/>
     <label>Efternavn: </label>
-    <input type="text" th:field="${child.lastName}"/> <br/><br/>
+    <input type="text" th:field="${child.lastName}" required="true"/>
     <label>Forældre: </label>
-    <input type="text" th:field="${child.parents}"/><br/><br/>
+    <input type="text" th:field="${child.farthersName}" required="true"/>
     <label>Forældre: </label>
-    <input type="text" th:field="${child.parents}"/><br/><br/>
+    <input type="" th:field="${child.mothersName}" required="true"/>
     <label>Fødselsdagsdato: </label>
-    <input type="text" th:field="${child.dateOfBirth}"/><br/><br/>
+    <input type="Date" th:field="${child.dateOfBirth}" required="true"/>
     <label>Allergier: </label>
-    <input type="text" th:field="${child.allergies}"/><br/><br/>
-    <label>Allergier: </label>
-    <input type="text" th:field="${child.allergies}"/><br/><br/>
-    <label>Allergier: </label>
-    <input type="text" th:field="${child.allergies}"/><br/><br/>
-    <label>Billede: </label>
-    <input id="image" type="file" name="profile_photo" placeholder="Photo" th:field="${child.picture}"> </input>
-    <br> <br/>
-    <input type="submit" value="Send" class="knapper"/>
+    <input type="text" th:field="${child.allergies}" required="true"/>
+    <input type="submit" value="Send"/>
 </form>
+
 </body>
 </html>
-
 
 
 

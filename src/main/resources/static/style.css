@@ -148,7 +148,7 @@ div.forældre {
     background-color: lightseagreen;
     border: none;
     color: black;
-    position:absolute; top:10; right:0;
+    position:absolute; top:0; right:0;
     padding: 10px 30px;
     text-align: center;
     text-decoration: none;
@@ -159,4 +159,15 @@ div.forældre {
     -webkit-transition-duration: 0.1s; /* Safari */
     transition-duration: 0.1s;
 
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    /*padding: 8px;*/
+    padding: 5px 8px 5px 8px;
 }

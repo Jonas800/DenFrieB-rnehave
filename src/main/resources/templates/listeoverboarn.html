@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="Http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{Style.css}" href="../static/Style.css" />
+
 </head>
 <body>
+<h2>Børn i børnehaven</h2>
+<a href="OpretBarn.html" class=".btn" >
+    <button style="color:chartreuse" > Create</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>fathers Name</th>
+        <th>mothers Name</th>
+        <th>date of birth</th>
+        <th>allergies</th>
+        <th></th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr th:each="child: ${children}">
+        <td th:text="${child.id}"/>
+        <td th:text="${child.firstName}"/>
+        <td th:text="${child.lastName}"/>
+        <td th:text="${child.farthersName}"/>
+        <td th:text="${child.mothersName}"/>
+        <td th:text="${child.dateOfBirth}"/>
+        <td th:text="${child.allergies}"/>
+
+        <td>
+
+            <button type="button" class=".btn-details">Details</button>
+            <button type="button" class=".btn-ed">edit</button>
+            <button type="button" class=".btn-del">delete</button>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 
 </body>
 </html>

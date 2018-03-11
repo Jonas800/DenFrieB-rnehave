@@ -14,30 +14,29 @@ import java.io.*;
 public class HomeController extends Child {
     ArrayList<Child> children = new ArrayList<>();
 
-    @GetMapping
-    public String createChild(Model model) {
+    @GetMapping("/")
+    public String OpretBarn(Model model) {
         model.addAttribute("child", new Child());
-        return "OpretBarn";
+        return "ledernsmenu";
     }
 
+
+
+
     @PostMapping("/OpretBarn")
-    public String createChild(@ModelAttribute("child") Child child) throws FileNotFoundException {
+    public String OpretBarn(@ModelAttribute("child") Child child) throws IOException {
 
         int id = children.size() + 1;
 
         child.setId(id);
         children.add(child);
-        PrintStream print = new PrintStream(new File("child.txt"));
+        FileWriter fileWriter = new FileWriter(new File("child.txt"));
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        for (Child c : children){
+            printWriter.print(c);
 
-        String s = "";
-        for (Child c : children) {
-            s += c.toString() + "/r/n";
         }
-
-        print.print(s);
-        print.close();
+        printWriter.close();
         return "redirect:/";
     }
-
-
 }
