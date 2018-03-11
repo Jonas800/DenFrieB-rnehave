@@ -16,29 +16,29 @@ public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String Visbarn(Model model) {
         model.addAttribute("barnArray", barnArray);
 
-        return "index";
+        return "Visbarn";
     }
 
     @GetMapping()
 
-    public String Create(Model model) {
+    public String TilmeldBarn(Model model) {
         model.addAttribute("barn", new Barn());
-        return "Create";
+        return "TilmeldBarn";
 
     }
 
     @PostMapping()
-    public String Create(@ModelAttribute Barn barn) throws IOException {
+    public String TilmeldBarn(@ModelAttribute Barn barn) throws IOException {
         int id = barnArray.size() + 1;
 
         barn.setId(id);
         barnArray.add(barn);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
         for (Barn c : barnArray){
-            fileWriter.write(String.valueOf(c));
+            fileWriter.write(c + "/n");
 
         }
         fileWriter.close();

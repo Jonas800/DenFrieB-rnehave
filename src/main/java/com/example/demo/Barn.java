@@ -18,13 +18,13 @@ public class Barn {
     }
 
 
-    public Barn(int id, String firstName, String lastName, String farthersName, String mothersName, Date Date, String allergies) {
+    public Barn(int id, String firstName, String lastName, String farthersName, String mothersName, Date dateOfBirth, String allergies) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.farthersName = farthersName;
         this.mothersName = mothersName;
-        this.dateOfBirth = Date;
+        this.dateOfBirth = dateOfBirth;
         this.allergies = allergies;
     }
 
