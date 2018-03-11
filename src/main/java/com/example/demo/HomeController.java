@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 import java.io.*;
@@ -40,16 +39,5 @@ public class HomeController extends Child {
         return "redirect:/";
     }
 
-    @GetMapping("/edit")
-    public String editChild() {
-
-        return "edit";
-    }
-
-    @PostMapping("/edit")
-    public String editChild() {
-
-        return "redirect:/";
-    }
 
 }

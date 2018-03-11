@@ -9,28 +9,22 @@
     <hr/>
     <form th:action="@{/edit}">
         <label>Barns id: </label>
-        <input type="text" th:field="${child.id}" /><br/><br/>
+        <input type="text" th:field="${children.id}"/><br/><br/>
         <label>Fornavn: </label>
-        <input type="text" th:field="${child.firstName}"/><br/><br/>
+        <input type="text" th:field="${children.firstName}"/><br/><br/>
         <label>Efternavn: </label>
-        <input type="text" th:field="${child.lastName}"/> <br/><br/>
+        <input type="text" th:field="${children.lastName}"/><br/><br/>
         <label>Forældre: </label>
-        <input type="text" th:field="${child.parents}"/><br/><br/>
-        <label>Forældre: </label>
-        <input type="text" th:field="${child.parents}"/><br/><br/>
+        <input type="text" th:field="${children.parents}" placeholder="far"/>
+        <input type="text" th:field="${children.parents}" placeholder="mor"/><br/><br/>
         <label>Fødselsdagsdato: </label>
-        <input type="text" th:field="${child.dateOfBirth}"/><br/><br/>
+        <input type="date" th:field="${children.dateOfBirth}"/><br/><br/>
         <label>Allergier: </label>
-        <input type="text" th:field="${child.allergies}"/><br/><br/>
-        <label>Allergier: </label>
-        <input type="text" th:field="${child.allergies}"/><br/><br/>
-        <label>Allergier: </label>
-        <input type="text" th:field="${child.allergies}"/><br/><br/>
-        <label>Billede: </label>
-        <input id="image" type="file" name="profile_photo" placeholder="Photo" th:field="${child.picture}"> </input>
-        <br> <br/>
-        <input type="submit" value="Send" class="knapper"/>
+        <input type="text" th:field="${children.allergies}"/><br/><br/>
+        <label>Billede: </label><br/>
+        <img src="http://bryllupsklar.dk/forum/uploads/post-26-1080907253.jpg" alt="Child" width="150" height="150"/><br/><br/>
+        <input type="submit" value="Send">
+        <hr/>
     </form>
 </body>
 </html>
-
