@@ -1,1 +1,1 @@
-Student{id=1, firstName='dslkfm', lastName='mlkdsfmlk', farthersName='kmlskd', mothersName='mwlkfm', dateOfBirth=Tue Dec 12 00:00:00 CET 2017, allergies='none'}/n
+Student{id=1, firstName='dslkfm', lastName='mlkdsfmlk', farthersName='kmlskd', mothersName='mwlkfm', dateOfBirth=Tue Dec 12 00:00:00 CET 2017, allergies='none'}/nStudent{id=2, firstName='dskfmkl', lastName='lkdmflkms', farthersName='lkmlfdkm', mothersName='kmldfkm', dateOfBirth=Wed Dec 12 00:00:00 CET 1990, allergies='sdfsdf'}/n

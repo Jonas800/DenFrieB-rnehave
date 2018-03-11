@@ -38,7 +38,7 @@ public class HomeController {
         barnArray.add(barn);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
         for (Barn c : barnArray){
-            fileWriter.write(c + "/n");
+            fileWriter.write(c + "\n");
 
         }
         fileWriter.close();
