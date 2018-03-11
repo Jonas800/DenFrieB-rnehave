@@ -19,19 +19,19 @@ public class HomeController {
     public String index(Model model) {
         model.addAttribute("barnArray", barnArray);
 
-
         return "index";
-
     }
-    @GetMapping("/Create")
+
+    @GetMapping()
+
     public String Create(Model model) {
         model.addAttribute("barn", new Barn());
         return "Create";
+
     }
 
-    @PostMapping("/Create")
+    @PostMapping()
     public String Create(@ModelAttribute Barn barn) throws IOException {
-
         int id = barnArray.size() + 1;
 
         barn.setId(id);
@@ -45,3 +45,4 @@ public class HomeController {
         return "redirect:/";
     }
 }
+
