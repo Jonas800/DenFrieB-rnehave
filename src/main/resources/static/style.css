@@ -160,3 +160,27 @@ div.forældre {
     transition-duration: 0.1s;
 
 }
+
+table{
+    border-collapse:collapse;
+    width:80%;}
+
+td,th{
+    border:1px solid #0a0500;
+    text-align:left;
+    padding:5px 8px 5px 8px;}
+
+.btn{
+    background-color: #ff8400;
+    border:none;
+    color:white;
+    padding:7px 10px;
+    text-align:center;
+    text-decoration:none;
+    font-size:12px;
+    border-radius:5px;
+    box-shadow:1px 1px 1px #888888;
+    -webkit-transition-duration:0.1s;
+    transition-duration:0.01s;}
+
+.btn:hover{box-shadow:2px 2px 2px #0a0500;}

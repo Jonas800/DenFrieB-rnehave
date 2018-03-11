@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../static/Style.css" />
 </head>
 <body>
+<div id="hovedmenu">
+    <button type="button" class="hjemknap" href> Roskilde Frie Børnehave</button>
+    <button type="button" class="knapper">Forside</button>
+    <button type="button" class="knapper">Om</button>
+    <button type="button" class="knapper">Kontakt</button>
+    <button type="button" class="knapper" >Børn</button>
+    <button type="button" class="knapper">Vagtplan</button>
+</div>
+
+<table>
+    <thead>
+    <caption>Børn</caption>
+    <tr>
+        <th>Id</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Forældre</th>
+        <th>Alder</th>
+        <th>Allergier</th>
+        <th>Funktioner</th>
+        <th>Billede</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr method="post" th:action="Child: ${children}">
+        <td th:text="${children.id}"></td>
+        <td th:text="${children.firstName}"></td>
+        <td th:text="${children.lastName}"></td>
+        <td th:text="${children.parents}"></td>
+        <td th:text="${children.dateOfBirth}"></td>
+        <td th:text="${children.allergies}"></td>
+        <td>
+            <a href="OpretBarn.html"><button class="btn">Detaljer</button></a>
+            <a href="edit.html"><button class="btn">Rediger</button></a>
+            <a href="?.html"><button class="btn">Slet</button></a>
+        </td>
+        <td th:text="${children.picture}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<div id="infoboks">
+    <p>Roskilde frie børnehave: <br></p>
+    <p>E-mail: RoskildeFrieBørnehave@outlook.com</p>
+    <p>Tlf. 26 26 26 26</p>
+    <p align=" middle">Adresse: adresse 00 0000 kommune</p>
+    <p align="right">Ansvarlig: Sandra Madsen </p>
+    <p align="right">E-mail: SandraMadsen@outlook.com</p>
+    <p align="right">Tlf. 27 27 27 27</p>
+</div>
 
 </body>
 </html>
