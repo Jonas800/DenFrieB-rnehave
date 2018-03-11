@@ -5,9 +5,9 @@
 
 </head>
 <body>
-<h2>Børn i børnehaven</h2>
-<a href="OpretBarn.html" class=".btn" >
-    <button style="color:chartreuse" > Create</button>
+<h2>Børn i Børnehaven</h2>
+<a href="Create.html" class=".btn" >
+<button style="color:chartreuse" > Create</button>
 </a>
 
 <table>
@@ -28,14 +28,14 @@
     <tbody>
 
 
-    <tr th:each="child: ${children}">
-        <td th:text="${child.id}"/>
-        <td th:text="${child.firstName}"/>
-        <td th:text="${child.lastName}"/>
-        <td th:text="${child.farthersName}"/>
-        <td th:text="${child.mothersName}"/>
-        <td th:text="${child.dateOfBirth}"/>
-        <td th:text="${child.allergies}"/>
+    <tr th:each="barn: ${barnArray}">
+        <td th:text="${student.id}"/>
+        <td th:text="${student.firstName}"/>
+        <td th:text="${student.lastName}"/>
+        <td th:text="${student.farthersName}"/>
+        <td th:text="${student.mothersName}"/>
+        <td th:text="${student.dateOfBirth}"/>
+        <td th:text="${student.allergies}"/>
 
         <td>
 

@@ -1,42 +1,47 @@
 package com.example.demo;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
-public class HomeController extends Child {
-    ArrayList<Child> children = new ArrayList<>();
+public class HomeController {
+    ArrayList<Barn> barnArray = new ArrayList<>();
 
     @GetMapping("/")
-    public String OpretBarn(Model model) {
-        model.addAttribute("child", new Child());
-        return "ledernsmenu";
+    public String index(Model model) {
+        model.addAttribute("barnArray", barnArray);
+
+
+        return "index";
+
+    }
+    @GetMapping("/Create")
+    public String Create(Model model) {
+        model.addAttribute("barn", new Barn());
+        return "Create";
     }
 
+    @PostMapping("/Create")
+    public String Create(@ModelAttribute Barn barn) throws IOException {
 
+        int id = barnArray.size() + 1;
 
-
-    @PostMapping("/OpretBarn")
-    public String OpretBarn(@ModelAttribute("child") Child child) throws IOException {
-
-        int id = children.size() + 1;
-
-        child.setId(id);
-        children.add(child);
+        barn.setId(id);
+        barnArray.add(barn);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-        for (Child c : children){
-            printWriter.print(c);
+        for (Barn c : barnArray){
+            fileWriter.write(String.valueOf(c));
 
         }
-        printWriter.close();
+        fileWriter.close();
         return "redirect:/";
     }
 }

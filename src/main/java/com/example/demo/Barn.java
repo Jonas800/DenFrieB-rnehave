@@ -2,10 +2,9 @@ package com.example.demo;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-public class Child {
+public class Barn {
     private int id;
     private String firstName;
     private String lastName;
@@ -15,11 +14,11 @@ public class Child {
     private Date dateOfBirth;
     private String allergies;
 
-    public Child() {
+    public Barn() {
     }
 
 
-    public Child(int id, String firstName, String lastName, String farthersName, String mothersName, Date Date, String allergies) {
+    public Barn(int id, String firstName, String lastName, String farthersName, String mothersName, Date Date, String allergies) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
