@@ -17,37 +17,35 @@
         <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>fathers Name</th>
-        <th>mothers Name</th>
-        <th>date of birth</th>
-        <th>allergies</th>
+        <th>Fathers Name</th>
+        <th>Mothers Name</th>
+        <th>Date of birth</th>
+        <th>Allergies</th>
         <th></th>
 
     </tr>
     </thead>
     <tbody>
 
-
     <tr th:each="barn: ${barnArray}">
-        <td th:text="${barn.id}"/>
-        <td th:text="${barn.firstName}"/>
-        <td th:text="${barn.lastName}"/>
-        <td th:text="${barn.farthersName}"/>
-        <td th:text="${barn.mothersName}"/>
-        <td th:text="${barn.dateOfBirth}"/>
-        <td th:text="${barn.allergies}"/>
+        <td th:text="${barnArray.id}"/>
+        <td th:text="${barnArray.firstName}"/>
+        <td th:text="${barnArray.lastName}"/>
+        <td th:text="${barnArray.farthersName}"/>
+        <td th:text="${barnArray.mothersName}"/>
+        <td th:text="${barnArray.dateOfBirth}"/>
+        <td th:text="${barnArray.allergies}"/>
 
         <td>
 
             <button type="button" class=".btn-details">Details</button>
-            <button type="button" class=".btn-ed">edit</button>
-            <button type="button" class=".btn-del">delete</button>
+            <button type="button" class=".btn-ed">Edit</button>
+            <button type="button" class=".btn-del">Delete</button>
 
         </td>
     </tr>
     </tbody>
 </table>
-
 
 </body>
 </html>

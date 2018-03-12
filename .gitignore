@@ -24,3 +24,4 @@ nbdist/
 .nb-gradle/
 src/main/resources/templates/boern.html
 child.txt
+src/main/java/com/example/demo/HomeController.java
