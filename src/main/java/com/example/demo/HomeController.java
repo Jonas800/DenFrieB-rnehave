@@ -45,6 +45,7 @@ public class HomeController {
         fileWriter.close();
         return "redirect:/";
     }
+
     @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model){
         int chooseChildId = 0;
