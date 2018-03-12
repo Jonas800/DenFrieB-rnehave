@@ -1,6 +1,9 @@
 package com.example.demo;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,13 +11,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.*;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 @Controller
-public class HomeController extends Child {
-    ArrayList<Child> children = new ArrayList<>();
+public class HomeController {
+    ArrayList<Barn> barnArray = new ArrayList<>();
 
+<<<<<<< HEAD
 
 
 
@@ -29,9 +35,18 @@ public class HomeController extends Child {
 
     @PostMapping("/OpretBarn")
     public String OpretBarn(@ModelAttribute("child") Child child) throws IOException {
+=======
+    @GetMapping("/")
+    public String Visbarn(Model model) {
+        model.addAttribute("barnArray", barnArray);
 
-        int id = children.size() + 1;
+        return "Visbarn";
+    }
+>>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
 
+    @GetMapping()
+
+<<<<<<< HEAD
         child.setId(id);
         children.add(child);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
@@ -78,7 +93,27 @@ public class HomeController extends Child {
             return "c";
         }
         return "vis";
+=======
+    public String TilmeldBarn(Model model) {
+        model.addAttribute("barn", new Barn());
+        return "TilmeldBarn";
+
+>>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
     }
 
+    @PostMapping()
+    public String TilmeldBarn(@ModelAttribute Barn barn) throws IOException {
+        int id = barnArray.size() + 1;
 
+        barn.setId(id);
+        barnArray.add(barn);
+        FileWriter fileWriter = new FileWriter(new File("child.txt"));
+        for (Barn c : barnArray){
+            fileWriter.write(c + "\n");
+
+        }
+        fileWriter.close();
+        return "redirect:/";
+    }
 }
+
