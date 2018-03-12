@@ -8,17 +8,17 @@
 <h1> Tilmeld børn</h1>
 <form method="Post" th:action="@{/TilmeldBarn}">
     <label>Fornavn: </label>
-    <input type="text" th:field="${barnArray.firstName}" required="true"/>
+    <input type="text" th:field="${barn.firstName}" required="true"/>
     <label>Efternavn: </label>
-    <input type="text" th:field="${barnArray.lastName}" required="true"/>
+    <input type="text" th:field="${barn.lastName}" required="true"/>
     <label>Forældre: </label>
-    <input type="text" th:field="${barnArray.farthersName}" required="true"/>
+    <input type="text" th:field="${barn.farthersName}" required="true"/>
     <label>Forældre: </label>
-    <input type="text" th:field="${barnArray.mothersName}" required="true"/>
+    <input type="text" th:field="${barn.mothersName}" required="true"/>
     <label>Fødselsdagsdato: </label>
-    <input type="date" th:field="${barnArray.dateOfBirth}" required="true"/>
+    <input type="date" th:field="${barn.dateOfBirth}" required="true"/>
     <label>Allergier: </label>
-    <input type="text" th:field="${barnArray.allergies}" required="true"/>
+    <input type="text" th:field="${barn.allergies}" required="true"/>
     <input type="submit" value="Send"/>
 </form>
 

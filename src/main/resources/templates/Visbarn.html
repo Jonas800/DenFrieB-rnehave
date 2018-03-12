@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="Http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" th:href="@{Style.css}" href="../static/Style.css" />
+    <link rel="stylesheet" type="text/css" href="Style.css" />
 
 </head>
 <body>
 <h2>Børn i Børnehaven</h2>
 <a href="TilmeldBarn.html" class=".btn" >
-<button style="color:chartreuse" > Create</button>
+    <button style="color:chartreuse" > Create</button>
 </a>
+<a href="edit.html" class=".btn">
+    <button style="color: #008CBA">edit</button>
 
+</a>
 <table>
     <thead>
     <tr>
@@ -17,35 +20,37 @@
         <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Fathers Name</th>
-        <th>Mothers Name</th>
-        <th>Date of birth</th>
-        <th>Allergies</th>
+        <th>fathers Name</th>
+        <th>mothers Name</th>
+        <th>date of birth</th>
+        <th>allergies</th>
         <th></th>
 
     </tr>
     </thead>
     <tbody>
 
+
     <tr th:each="barn: ${barnArray}">
-        <td th:text="${barnArray.id}"/>
-        <td th:text="${barnArray.firstName}"/>
-        <td th:text="${barnArray.lastName}"/>
-        <td th:text="${barnArray.farthersName}"/>
-        <td th:text="${barnArray.mothersName}"/>
-        <td th:text="${barnArray.dateOfBirth}"/>
-        <td th:text="${barnArray.allergies}"/>
+        <td th:text="${barn.id}"/>
+        <td th:text="${barn.firstName}"/>
+        <td th:text="${barn.lastName}"/>
+        <td th:text="${barn.farthersName}"/>
+        <td th:text="${barn.mothersName}"/>
+        <td th:text="${barn.dateOfBirth}"/>
+        <td th:text="${barn.allergies}"/>
 
         <td>
 
             <button type="button" class=".btn-details">Details</button>
-            <button type="button" class=".btn-ed">Edit</button>
-            <button type="button" class=".btn-del">Delete</button>
+            <button type="button" class=".btn-ed">edit</button>
+            <button type="button" class=".btn-del">delete</button>
 
         </td>
     </tr>
     </tbody>
 </table>
+
 
 </body>
 </html>

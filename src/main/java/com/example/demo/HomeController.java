@@ -17,10 +17,10 @@ public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
 
     @GetMapping("/")
-    public String Visbarn(Model model) {
+    public String ledernsMenu(Model model) {
         model.addAttribute("barnArray", barnArray);
 
-        return "Visbarn";
+        return "ledernsMenu";
     }
 
     @GetMapping()
