@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 @Controller
@@ -48,10 +49,10 @@ public class HomeController {
 
 <<<<<<< HEAD
         child.setId(id);
-        children.add(child);
+        barnArray.add(child);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        for (Child c : children){
+        for (Child c : barnArray){
             printWriter.print(c);
 
         }
@@ -63,21 +64,21 @@ public class HomeController {
    @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model){
         int chooseChildId = 0;
-        for(int i = 0; i < children.size(); i++) {
-            if (children.get(i).getId() == id) {
+        for(int i = 0; i < barnArray.size(); i++) {
+            if (barnArray.get(i).getId() == id) {
                 chooseChildId = i;
             }
           }
 
-        model.addAttribute("child", children.get(chooseChildId));
+        model.addAttribute("child", barnArray.get(chooseChildId));
         return "edit";
     }
 
     @PostMapping("/edit")
     public String editChild(@ModelAttribute Child child){
-        for(int i = 0; i < children.size(); i++){
-            if(child.getId() == children.get(i).getId()){
-                children.set(i, child);
+        for(int i = 0; i < barnArray.size(); i++){
+            if(child.getId() == barnArray.get(i).getId()){
+                barnArray.set(i, child);
                 break;
             }else{
                 System.out.println("Ønsket barn findes ikke i vores system");
@@ -89,7 +90,7 @@ public class HomeController {
 
     @PostMapping("/vis")
     public String visBarn(@ModelAttribute Child child){
-        for(Child c: children) {
+        for(Child c: barnArray) {
             return "c";
         }
         return "vis";
