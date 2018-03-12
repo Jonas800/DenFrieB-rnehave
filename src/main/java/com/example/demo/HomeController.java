@@ -21,10 +21,6 @@ import java.util.ArrayList;
 public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
 
-<<<<<<< HEAD
-
-
-
     @GetMapping("/OpretBarn")
     public String OpretBarn(Model model) {
         model.addAttribute("child", new Child());
@@ -36,18 +32,17 @@ public class HomeController {
 
     @PostMapping("/OpretBarn")
     public String OpretBarn(@ModelAttribute("child") Child child) throws IOException {
-=======
+
     @GetMapping("/")
     public String Visbarn(Model model) {
         model.addAttribute("barnArray", barnArray);
 
         return "Visbarn";
     }
->>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
 
     @GetMapping()
 
-<<<<<<< HEAD
+
         child.setId(id);
         barnArray.add(child);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
@@ -94,12 +89,12 @@ public class HomeController {
             return "c";
         }
         return "vis";
-=======
+
     public String TilmeldBarn(Model model) {
         model.addAttribute("barn", new Barn());
         return "TilmeldBarn";
 
->>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
+
     }
 
     @PostMapping()
