@@ -1,9 +1,5 @@
 package com.example.demo;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,100 +16,66 @@ import java.util.ArrayList;
 public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
 
-<<<<<<< HEAD
+    @GetMapping("/")
+    public String ledernsmenu() {
+
+        return "ledernsmenu";
 
 
-
-    @GetMapping("/OpretBarn")
-    public String OpretBarn(Model model) {
-        model.addAttribute("child", new Child());
-        return "OpretBarn";
     }
 
-
-
-
-    @PostMapping("/OpretBarn")
-    public String OpretBarn(@ModelAttribute("child") Child child) throws IOException {
-=======
-    @GetMapping("/")
+    @GetMapping("/Visbarn")
     public String Visbarn(Model model) {
         model.addAttribute("barnArray", barnArray);
-
         return "Visbarn";
     }
->>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
 
-    @GetMapping()
-
-<<<<<<< HEAD
-        child.setId(id);
-        children.add(child);
-        FileWriter fileWriter = new FileWriter(new File("child.txt"));
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-        for (Child c : children){
-            printWriter.print(c);
-
-        }
-        printWriter.close();
-        return "redirect:/";
-    }
-
-
-   @GetMapping("/edit")
-    public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model){
-        int chooseChildId = 0;
-        for(int i = 0; i < children.size(); i++) {
-            if (children.get(i).getId() == id) {
-                chooseChildId = i;
-            }
-          }
-
-        model.addAttribute("child", children.get(chooseChildId));
-        return "edit";
-    }
-
-    @PostMapping("/edit")
-    public String editChild(@ModelAttribute Child child){
-        for(int i = 0; i < children.size(); i++){
-            if(child.getId() == children.get(i).getId()){
-                children.set(i, child);
-                break;
-            }else{
-                System.out.println("Ønsket barn findes ikke i vores system");
-            }
-
-        }
-        return "redirect";
-    }
-
-    @PostMapping("/vis")
-    public String visBarn(@ModelAttribute Child child){
-        for(Child c: children) {
-            return "c";
-        }
-        return "vis";
-=======
+    @GetMapping("/TilmeldBarn")
     public String TilmeldBarn(Model model) {
         model.addAttribute("barn", new Barn());
         return "TilmeldBarn";
 
->>>>>>> faf1034f97e242304ec8548460676a9f82a12ed4
     }
 
-    @PostMapping()
+    @PostMapping("/TilmeldBarn")
     public String TilmeldBarn(@ModelAttribute Barn barn) throws IOException {
         int id = barnArray.size() + 1;
 
         barn.setId(id);
         barnArray.add(barn);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
-        for (Barn c : barnArray){
+        for (Barn c : barnArray) {
             fileWriter.write(c + "\n");
 
         }
         fileWriter.close();
         return "redirect:/";
     }
-}
 
+    @GetMapping("/edit")
+    public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
+        int chooseChildId = 0;
+        for (int i = 0; i < barnArray.size(); i++) {
+            if (barnArray.get(i).getId() == id) {
+                chooseChildId = i;
+            }
+        }
+
+        model.addAttribute("barn", barnArray.get(chooseChildId));
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String editChild(@ModelAttribute Barn barn) {
+        for (int i = 0; i < barnArray.size(); i++) {
+            if (barn.getId() == barnArray.get(i).getId()) {
+                barnArray.set(i, barn);
+                break;
+            } else {
+                System.out.println("Ønsket barn findes ikke i vores system");
+            }
+
+        }
+        return "redirect";
+    }
+}
