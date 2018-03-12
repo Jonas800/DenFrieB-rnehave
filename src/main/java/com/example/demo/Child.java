@@ -9,41 +9,24 @@ public class Child {
     private int id;
     private String firstName;
     private String lastName;
-<<<<<<< HEAD
-    //private Date dateOfBirth;
-    public Child(){}
-
-    public Child(int id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        //this.dateOfBirth = dateOfBirth;
-    }
-
-    @Override
-    public String toString() {
-        return id + " " + firstName + " " + lastName;
-=======
-    private ArrayList<Parent> parents;
-    private ArrayList<String> allergies;
-    private String picture;
+    private String fathersName;
+    private String mothersName;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateOfBirth;
-    private int tlfNumber;
+    private String allergies;
 
     public Child() {
     }
 
-    public Child(int id, String firstName, String lastName, ArrayList<Parent> parents, Date Date, ArrayList<String> allergies, String picture) {
+
+    public Child(int id, String firstName, String lastName, String fathersName, String mothersName, Date Date, String allergies) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.parents = parents;
+        this.fathersName = fathersName;
+        this.mothersName = mothersName;
         this.dateOfBirth = Date;
         this.allergies = allergies;
-        this.picture = picture;
-
->>>>>>> d1ca416ccd175964d9ce25a50ba520f0569160bf
     }
 
     public int getId() {
@@ -70,33 +53,20 @@ public class Child {
         this.lastName = lastName;
     }
 
-    //public Date getDateOfBirth() {
-      //  return dateOfBirth;
-    //}
-
-    //public void setDateOfBirth(Date dateOfBirth) {
-      //  this.dateOfBirth = dateOfBirth;
-    //}
-
-<<<<<<< HEAD
-
-
-}
-=======
-    public ArrayList<String> getAllergies() {
-        return allergies;
+    public String getFathersName() {
+        return fathersName;
     }
 
-    public void setAllergies(ArrayList<String> allergies) {
-        this.allergies = allergies;
+    public void setFathersName(String fathersName) {
+        this.fathersName = fathersName;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getMothersName() {
+        return mothersName;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setMothersName(String mothersName) {
+        this.mothersName = mothersName;
     }
 
     public Date getDateOfBirth() {
@@ -107,5 +77,24 @@ public class Child {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", fathersName='" + fathersName + '\'' +
+                ", mothersName='" + mothersName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", allergies='" + allergies + '\'' +
+                '}';
+    }
 }
->>>>>>> d1ca416ccd175964d9ce25a50ba520f0569160bf
