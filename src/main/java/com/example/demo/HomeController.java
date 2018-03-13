@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @Controller
 public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
-
+     int barnId=0;
 
     @GetMapping("/")
     public String ledernsmenu(Model model) {
@@ -57,18 +57,15 @@ public class HomeController {
 
     @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
-        int chooseChildId = 0;
-        for (int i = 0; i < barnArray.size(); i++) {
-            if (barnArray.get(i).getId() == id) {
-                chooseChildId = i;
-            }
-        }
-
-        model.addAttribute("barn", barnArray.get(chooseChildId));
+       if(model  != null) {
+        model.addAttribute("barn",barnArray.get(id-1));
+       }
+        barnId=id;
         return "edit";
     }
 
     @PostMapping("/edit")
+<<<<<<< HEAD
     public String editChild(@ModelAttribute Barn barn, int id) throws IOException {
         FileWriter fileupdater= new FileWriter("src/main/resources/child.txt");
         for (int i = 0; i < barnArray.size(); i++) {
@@ -81,18 +78,17 @@ public class HomeController {
             } else {
                 System.out.println("Ã˜nsket barn findes ikke i vores system");
             }
+=======
+    public String editChild(@ModelAttribute Barn barn) {
+        barn.setId(barnId);
+        barnArray.set(barnId -1,barn);
+        System.out.println(barn);
+        return"redirect:/";
 
-        }
-        return "redirect";
+>>>>>>> 7d5405b0e59a6b72b02d3f98efce48c3de34392f
+
+
     }
+
+
 }
- /*   @GetMapping("/loginside")
-    public String loginSide(Model model){
-        model.addAttribute("barnArray", barnArray);
-
-        return "loginside";
-    }
-
-    @PostMapping(@ModelAttribute )
-
-*/
