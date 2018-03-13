@@ -16,14 +16,21 @@ import java.util.ArrayList;
 public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
 
+
     @GetMapping("/")
-    public String ledernsMenu(Model model) {
+    public String ledernsmenu(Model model) {
         model.addAttribute("barnArray", barnArray);
 
-        return "ledernsMenu";
+        return "ledernsmenu";
     }
 
-    @GetMapping()
+    @GetMapping("/Visbarn")
+    public String Visbarn(Model model) {
+        model.addAttribute("barnArray", barnArray);
+        return "Visbarn";
+    }
+
+    @GetMapping("/TilmeldBarn")
 
     public String TilmeldBarn(Model model) {
         model.addAttribute("barn", new Barn());
@@ -31,14 +38,14 @@ public class HomeController {
 
     }
 
-    @PostMapping()
+    @PostMapping("/TilmeldBarn")
     public String TilmeldBarn(@ModelAttribute Barn barn) throws IOException {
         int id = barnArray.size() + 1;
 
         barn.setId(id);
         barnArray.add(barn);
         FileWriter fileWriter = new FileWriter(new File("child.txt"));
-        for (Barn c : barnArray){
+        for (Barn c : barnArray) {
             fileWriter.write(c + "\n");
 
         }
@@ -46,30 +53,42 @@ public class HomeController {
         return "redirect:/";
     }
 
+
     @GetMapping("/edit")
-    public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model){
+    public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
         int chooseChildId = 0;
-        for(int i = 0; i < barnArray.size(); i++) {
+        for (int i = 0; i < barnArray.size(); i++) {
             if (barnArray.get(i).getId() == id) {
                 chooseChildId = i;
             }
         }
 
-        model.addAttribute("child", barnArray.get(chooseChildId));
+        model.addAttribute("barn", barnArray.get(chooseChildId));
         return "edit";
     }
 
     @PostMapping("/edit")
-    public String editChild(@ModelAttribute Barn child){
-        for(int i = 0; i < barnArray.size(); i++){
-            if(child.getId() == barnArray.get(i).getId()){
-                barnArray.set(i, child);
+    public String editChild(@ModelAttribute Barn barn, int id) {
+        for (int i = 0; i < barnArray.size(); i++) {
+            if (barn.getId() == barnArray.get(i).getId()) {
+                barnArray.add(new Barn());
+                barnArray.get(barnArray.size() -1).getId();
                 break;
-            }else{
-                System.out.println("Ønsket barn findes ikke i vores system");
+            } else {
+                System.out.println("Ã˜nsket barn findes ikke i vores system");
             }
 
         }
         return "redirect";
     }
 }
+ /*   @GetMapping("/loginside")
+    public String loginSide(Model model){
+        model.addAttribute("barnArray", barnArray);
+
+        return "loginside";
+    }
+
+    @PostMapping(@ModelAttribute )
+
+*/
