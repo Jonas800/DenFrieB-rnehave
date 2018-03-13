@@ -8,7 +8,7 @@
 <body>
 <h1>Opdater indformation om barnet </h1>
 <hr/>
-<form th:action="@{/edit}">
+<form method="post" th:action="@{/edit}">
     <label>Barns id: </label>
     <input type="text" th:field="${barn.id}"/><br/><br/>
     <label>Fornavn: </label>
@@ -24,28 +24,8 @@
     <input type="text" th:field="${barn.allergies}"/><br/><br/>
     <label>Billede: </label><br/>
     <img src="http://bryllupsklar.dk/forum/uploads/post-26-1080907253.jpg" alt="barnArray" width="150" height="150"/><br/><br/>
-    <input type="submit" value="Send">
+    <input type="submit" value="update">
     <hr/>
-<<<<<<< HEAD
 </form>
-=======
-    <form th:action="@{/edit}">
-        <label>Barns id: </label>
-        <input type="text" th:field="${children.id}"/><br/><br/>
-        <label>Fornavn: </label>
-        <input type="text" th:field="${children.firstName}"/><br/><br/>
-        <label>Efternavn: </label>
-        <input type="text" th:field="${children.lastName}"/><br/><br/>
-        <label>Forældre: </label>
-        <input type="text" th:field="${children.parents}" placeholder="far"/>
-        <input type="text" th:field="${children.parents}" placeholder="mor"/><br/><br/>
-        <label>Fødselsdagsdato: </label>
-        <input type="date" th:field="${children.dateOfBirth}"/><br/><br/>
-        <label>Allergier: </label>
-        <input type="text" th:field="${children.allergies}"/><br/><br/>
-        <input type="submit" value="Send">
-        <hr/>
-    </form>
->>>>>>> 662cb9c91b8729e0b850e053b90f10b180ae9a04
 </body>
 </html>
