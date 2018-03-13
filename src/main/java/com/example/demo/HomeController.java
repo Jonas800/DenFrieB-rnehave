@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @Controller
 public class HomeController {
     ArrayList<Barn> barnArray = new ArrayList<>();
-     int barnId=0;
+    int barnId = 0;
 
     @GetMapping("/")
     public String ledernsmenu(Model model) {
@@ -47,7 +47,7 @@ public class HomeController {
         PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
         String s = "";
         for (Barn c : barnArray) {
-            s = c.toString() + "\r\n";
+            s += c.toString() + "\r\n";
         }
         ps.print(s);
         ps.close();
@@ -57,37 +57,19 @@ public class HomeController {
 
     @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
-       if(model  != null) {
-        model.addAttribute("barn",barnArray.get(id-1));
-       }
-        barnId=id;
+        if (model != null) {
+            model.addAttribute("barn", barnArray.get(id - 1));
+        }
+        barnId = id;
         return "edit";
     }
 
     @PostMapping("/edit")
-<<<<<<< HEAD
-    public String editChild(@ModelAttribute Barn barn, int id) throws IOException {
-        FileWriter fileupdater= new FileWriter("src/main/resources/child.txt");
-        for (int i = 0; i < barnArray.size(); i++) {
-            if (barn.getId() == id) {
-                barn.set
-                barnArray.get(barnArray.size() -1).getId();
-
-
-                break;
-            } else {
-                System.out.println("Ã˜nsket barn findes ikke i vores system");
-            }
-=======
     public String editChild(@ModelAttribute Barn barn) {
         barn.setId(barnId);
-        barnArray.set(barnId -1,barn);
+        barnArray.set(barnId - 1, barn);
         System.out.println(barn);
-        return"redirect:/";
-
->>>>>>> 7d5405b0e59a6b72b02d3f98efce48c3de34392f
-
-
+        return "redirect:/";
     }
 
 
