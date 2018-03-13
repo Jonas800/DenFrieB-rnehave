@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 @Controller
@@ -31,7 +32,6 @@ public class HomeController {
     }
 
     @GetMapping("/TilmeldBarn")
-
     public String TilmeldBarn(Model model) {
         model.addAttribute("barn", new Barn());
         return "TilmeldBarn";
@@ -44,12 +44,13 @@ public class HomeController {
 
         barn.setId(id);
         barnArray.add(barn);
-        FileWriter fileWriter = new FileWriter(new File("child.txt"));
+        PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
+        String s = "";
         for (Barn c : barnArray) {
-            fileWriter.write(c + "\n");
-
+            s = c.toString() + "\r\n";
         }
-        fileWriter.close();
+        ps.print(s);
+        ps.close();
         return "redirect:/";
     }
 

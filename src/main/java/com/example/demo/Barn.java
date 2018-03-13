@@ -10,7 +10,7 @@ public class Barn {
     private String lastName;
     private String farthersName;
     private String mothersName;
-    @DateTimeFormat(pattern =   "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String allergies;
 
