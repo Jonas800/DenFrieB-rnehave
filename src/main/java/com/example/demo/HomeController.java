@@ -69,11 +69,14 @@ public class HomeController {
     }
 
     @PostMapping("/edit")
-    public String editChild(@ModelAttribute Barn barn, int id) {
+    public String editChild(@ModelAttribute Barn barn, int id) throws IOException {
+        FileWriter fileupdater= new FileWriter("src/main/resources/child.txt");
         for (int i = 0; i < barnArray.size(); i++) {
-            if (barn.getId() == barnArray.get(i).getId()) {
-                barnArray.add(new Barn());
+            if (barn.getId() == id) {
+                barn.set
                 barnArray.get(barnArray.size() -1).getId();
+
+
                 break;
             } else {
                 System.out.println("Ã˜nsket barn findes ikke i vores system");
