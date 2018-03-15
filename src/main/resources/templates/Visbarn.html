@@ -1,8 +1,9 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="Http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css"  href="../static/Style.css" />
+    <link rel="stylesheet" href="Custom.css">
 
 </head>
 <body>
@@ -35,14 +36,14 @@
         <td th:text="${barn.lastName}"/>
         <td th:text="${barn.farthersName}"/>
         <td th:text="${barn.mothersName}"/>
-        <td th:text="${barn.dateOfBirth}"/>
+        <td th:text="${#dates.format(barn.dateOfBirth, 'dd-MM-yyyy')}"/>
         <td th:text="${barn.allergies}"/>
 
         <td>
 
-            <button type="button" class=".btn-details">Details</button>
-            <button type="button" class=".btn-ed">edit</button>
-            <button type="button" class=".btn-del">delete</button>
+            <a href="" class="knap">Details</a>
+            <a th:href="@{'/edit?id='+${barn.id}}" class="knap">edit</a>
+            <a href="" class="knap">delete</a>
 
         </td>
     </tr>

@@ -86,14 +86,6 @@ public class Barn {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", farthersName='" + farthersName + '\'' +
-                ", mothersName='" + mothersName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", allergies='" + allergies + '\'' +
-                '}';
+        return id + "#" + firstName + "#" + lastName + "#" + farthersName + "#" + mothersName + "#" + dateOfBirth + "#" + allergies;
     }
 }

@@ -171,3 +171,9 @@ td, th {
     /*padding: 8px;*/
     padding: 5px 8px 5px 8px;
 }
+td a:nth-of-type(2){
+    background-color:green;
+}
+td a:nth-of-type(3){
+    background-color:red;
+}

@@ -7,15 +7,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Scanner;
 
 @Controller
 public class HomeController {
-    ArrayList<Barn> barnArray = new ArrayList<>();
+    ArrayList<Barn> barnArray = getBarnArray();
     int barnId = 0;
 
     @GetMapping("/")
@@ -72,5 +74,30 @@ public class HomeController {
         return "redirect:/";
     }
 
+    public ArrayList<Barn> getBarnArray() {
+        ArrayList<Barn> barnArrayList = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File("src/main/resources/child.txt"));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                Scanner readLine = new Scanner(line).useDelimiter("#");
 
+                Barn barn = new Barn();
+                barn.setId(readLine.nextInt());
+                barn.setFirstName(readLine.next());
+                barn.setLastName(readLine.next());
+                barn.setFarthersName(readLine.next());
+                barn.setMothersName(readLine.next());
+                DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy");
+                Date dateOfBirth = (df.parse(readLine.next()));
+                barn.setDateOfBirth(dateOfBirth);
+                barn.setAllergies(readLine.next());
+
+                barnArrayList.add(barn);
+            }
+        } catch (FileNotFoundException e) {
+        } finally {
+            return barnArrayList;
+        }
+    }
 }
