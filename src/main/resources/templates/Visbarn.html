@@ -43,7 +43,7 @@
 
             <a href="" class="knap">Details</a>
             <a th:href="@{'/edit?id='+${barn.id}}" class="knap">edit</a>
-            <a href="" class="knap">delete</a>
+            <a th:href="@{'/slet?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')" class="knap">delete</a>
 
         </td>
     </tr>

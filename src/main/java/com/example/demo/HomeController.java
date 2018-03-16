@@ -46,13 +46,7 @@ public class HomeController {
 
         barn.setId(id);
         barnArray.add(barn);
-        PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
-        String s = "";
-        for (Barn c : barnArray) {
-            s += c.toString() + "\r\n";
-        }
-        ps.print(s);
-        ps.close();
+        saveToFile(barnArray);
         return "redirect:/";
     }
 
@@ -67,11 +61,29 @@ public class HomeController {
     }
 
     @PostMapping("/edit")
-    public String editChild(@ModelAttribute Barn barn) {
+    public String editChild(@ModelAttribute Barn barn) throws FileNotFoundException{
         barn.setId(barnId);
         barnArray.set(barnId - 1, barn);
-        System.out.println(barn);
+        saveToFile(barnArray);
         return "redirect:/";
+    }
+
+    @GetMapping("/slet")
+    public String sletChild(@RequestParam(value = "id", defaultValue = "0") int id) throws FileNotFoundException{
+        barnArray.remove(id-1);
+        saveToFile(barnArray);
+        return "redirect:/Visbarn";
+    }
+
+    public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException{
+        PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
+        String s = "";
+        for (Barn c : barnArray) {
+            s += c.toString() + "\r\n";
+        }
+        ps.print(s);
+        ps.close();
+
     }
 
     public ArrayList<Barn> getBarnArray() {
