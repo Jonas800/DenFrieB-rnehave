@@ -1,16 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Rediger barn</title>
+    <link rel="stylesheet" href="Custom.css"/>
+    <link rel="stylesheet" href="Style.css"/>
+
 </head>
 <body>
+<header>
+    <nav>
+        <a href="TilmeldBarn">Tilmeld barn</a>
+        <a href="Visbarn">Vis børn</a>
+    </nav>
+</header>
 <h1>Opdater indformation om barnet </h1>
 <hr/>
 <form method="post" th:action="@{/edit}">
-    <label>Barns id: </label>
-    <input type="text" th:field="${barn.id}"/><br/><br/>
     <label>Fornavn: </label>
     <input type="text" th:field="${barn.firstName}"/><br/><br/>
     <label>Efternavn: </label>
@@ -22,17 +28,9 @@
     <input type="date" th:field="${barn.dateOfBirth}"/><br/><br/>
     <label>Allergier: </label>
     <input type="text" th:field="${barn.allergies}"/><br/><br/>
-    <label>Billede: </label><br/>
-    <img src="http://bryllupsklar.dk/forum/uploads/post-26-1080907253.jpg" alt="barnArray" width="150" height="150"/><br/><br/>
     <input type="submit" value="update">
     <hr/>
-<<<<<<< HEAD
 
 </form>
-
-
-=======
-</form>
->>>>>>> 7d5405b0e59a6b72b02d3f98efce48c3de34392f
 </body>
 </html>

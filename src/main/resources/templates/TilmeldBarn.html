@@ -2,9 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tilmeld Børn</title>
-    <link rel="stylesheet" type="text/css" href="Style.css" />
+    <link rel="stylesheet" href="Custom.css"/>
+    <link rel="stylesheet" href="Style.css"/>
 </head>
 <body>
+<header>
+    <nav>
+        <a href="TilmeldBarn">Tilmeld barn</a>
+        <a href="Visbarn">Vis børn</a>
+    </nav>
+</header>
 <h1> Tilmeld børn</h1>
 <form method="Post" th:action="@{/TilmeldBarn}">
     <label>Fornavn: </label>
