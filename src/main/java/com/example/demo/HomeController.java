@@ -47,6 +47,7 @@ public class HomeController {
         barn.setId(id);
         barnArray.add(barn);
         saveToFile(barnArray);
+
         return "redirect:/";
     }
 
@@ -85,6 +86,8 @@ public class HomeController {
         ps.close();
 
     }
+
+
 
     public ArrayList<Barn> getBarnArray() {
         ArrayList<Barn> barnArrayList = new ArrayList<>();
