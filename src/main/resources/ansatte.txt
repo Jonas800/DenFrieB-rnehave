@@ -1,0 +1,3 @@
+Medarbejder{firstName='egmlkrem', lastName='mlkgmdl', address='lkmlgfkmelk', telephoneNumber='mlkdfmglkfmd', Stilling='mslkdmglkdsmg'}
+Medarbejder{firstName='egmlkrem', lastName='mlkgmdl', address='lkmlgfkmelk', telephoneNumber='mlkdfmglkfmd', Stilling='mslkdmglkdsmg'}
+Medarbejder{firstName='wekrnlkwern', lastName='lknwleknew', address='lknlkfndl', telephoneNumber='lskdflknsdfl', Stilling='lknsdlkv'}

@@ -19,7 +19,7 @@ public class Barn {
 
 
     public Barn(int id, String firstName, String lastName, String farthersName, String mothersName, Date dateOfBirth, String allergies
-                ,String picture) {
+            ,String picture) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Rediger ansat</title>
+    <link rel="stylesheet" href="Custom.css"/>
+    <link rel="stylesheet" href="Style.css"/>
+
+</head>
+<body>
+
+<hr/>
+<form method="post" th:action="@{/editEMP}">
+    <label>id</label>
+    <input type="text" th:field="${medarbejder.id}"/><br/><br/>
+    <label>Fornavn: </label>
+    <input type="text" th:field="${medarbejder.firstName}"/><br/><br/>
+    <label>Efternavn: </label>
+    <input type="text" th:field="${medarbejder.lastName}"/><br/><br/>
+    <label>telefon.nr: </label>
+    <input type="text" th:field="${medarbejder.telephoneNumber}"/>
+    <label>adresse: </label>
+    <input type="date" th:field="${medarbejder.address}"/><br/><br/>
+    <label>Stilling: </label>
+    <input type="text" th:field="${medarbejder.Stilling}"/><br/><br/>
+    <input type="submit" value="opdater">
+    <hr/>
+
+</form>
+</body>
+</html>

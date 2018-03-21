@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Tilmeld Børn</title>
-    <link rel="stylesheet" href="Custom.css"/>
-    <link rel="stylesheet" href="Style.css"/>
+    <link rel="stylesheet" type="text/css" href="Style.css" />
 </head>
+
 <body>
-<header>
-    <nav>
-        <a href="TilmeldBarn">Tilmeld barn</a>
-        <a href="Visbarn">Vis børn</a>
-    </nav>
-</header>
 <h1> Tilmeld børn</h1>
 <form method="Post" th:action="@{/TilmeldBarn}">
     <label>Fornavn: </label>
@@ -26,13 +20,12 @@
     <input type="date" th:field="${barn.dateOfBirth}" required="true"/>
     <label>Allergier: </label>
     <input type="text" th:field="${barn.allergies}" required="true"/>
-    <label>Billed</label>
-    <input type="picture" th:field="${barn.picture}" required="true"/>
-    <button type="button">Vedhæft billed</button>
+    <buttom type="picture" th:field="${barn.picture}" required="true"/>
     <input type="file" name="billed" accept="image/*">
-    <input type="submit">
-    <input type="submit" value="Send"/>
+    <input type="submit" value="Submit"/>
 </form>
+<hr/>
 
+</form>
 </body>
 </html>

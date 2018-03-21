@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>tilføj Medarbejder</title>
+    <link rel="stylesheet" type="text/css" href="Style.css" />
+    <nav>
+        <a href="ledernsmenu.html">tilbage til ansatte</a>
+    </nav>
+</head>
+
+<body>
+<h1> Tilmeld ansat</h1>
+<form method="Post" th:action="@{/tilføjMA}">
+    <label>Fornavn: </label>
+    <input type="text" th:field="${medarbejder.firstName}" required="true"/>
+    <label>Efternavn: </label>
+    <input type="text" th:field="${medarbejder.lastName}" required="true"/>
+    <label>adresse: </label>
+    <input type="text" th:field="${medarbejder.address}" required="true"/>
+    <label>Telefon nr.: </label>
+    <input type="text" th:field="${medarbejder.telephoneNumber}" required="true"/>
+    <label>Stilling: </label>
+    <input type="text" th:field="${medarbejder.Stilling}" required="true"/>
+    <input type="submit" value="Send"/>
+
+
+</form>
+<hr/>
+
+</form>
+</body>
+</html>

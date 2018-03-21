@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="stylesheet" href="Custom.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="tilføjMA">Tilføj ansat</a>
+    </nav>
+</header>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Fornavn</th>
+            <th>Efternavn</th>
+            <th> adresse</th>
+            <th>Telefon.nr</th>
+            <th>Stilling</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tr th:each="medarbejder: ${MedarbejderArray}">
+            <td th:text="${medarbejder.id}"/>
+            <td th:text="${medarbejder.firstName}"/>
+            <td th:text="${medarbejder.lastName}"/>
+            <td th:text="${medarbejder.address}"/>
+            <td th:text="${medarbejder.telephoneNumber}"/>
+            <td th:text="${medarbejder.Stilling}"/>
+
+            <td>
+                <a th:href="@{'/editEMP?ID='+${medarbejder.id}}" class="knap">Rediger</a>
+                <a th:href="@{'/slet?ID='+${medarbejder.id}}" onclick="return confirm('Bekræft sletning')"
+                   class="knap">Slet</a>
+
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

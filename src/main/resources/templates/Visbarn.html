@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" type="text/css" href="Style.css"/>
     <link rel="stylesheet" href="Custom.css">
@@ -36,7 +36,7 @@
         <tbody>
 
 
-        <tr th:each="barn: ${barnArray}">
+        <tr th:each="barn: ${barnArrayList}">
             <td th:text="${barn.id}"/>
             <td th:text="${barn.firstName}"/>
             <td th:text="${barn.lastName}"/>

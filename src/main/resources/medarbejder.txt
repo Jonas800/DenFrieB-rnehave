@@ -1,0 +1,3 @@
+Medarbejder{firstName='hej', lastName='hej', address='hej', telephoneNumber='hej', Stilling='hej'}
+Medarbejder{firstName='werjweorj', lastName='powjrpowej', address='pojeprojwpor', telephoneNumber='pojqproj', Stilling='pojpowjperoj'}
+Medarbejder{firstName='werjwejrp', lastName='pojpwerojwpeoj', address='pojpoerjpwoejr', telephoneNumber='pojqprojq', Stilling='pojqporjq'}
