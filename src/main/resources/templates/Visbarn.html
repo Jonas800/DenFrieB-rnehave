@@ -36,7 +36,7 @@
         <tbody>
 
 
-        <tr th:each="barn: ${barnArrayList}">
+        <tr th:each="barn: ${barnArray}">
             <td th:text="${barn.id}"/>
             <td th:text="${barn.firstName}"/>
             <td th:text="${barn.lastName}"/>
@@ -47,7 +47,7 @@
 
             <td>
                 <a th:href="@{'/edit?id='+${barn.id}}" class="knap">Rediger</a>
-                <a th:href="@{'/slet?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')"
+                <a th:href="@{'/SletBarn?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')"
                    class="knap">Slet</a>
 
             </td>

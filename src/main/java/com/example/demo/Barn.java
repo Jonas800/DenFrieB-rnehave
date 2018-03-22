@@ -13,13 +13,12 @@ public class Barn {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String allergies;
-    private String picture;
     public Barn() {
     }
 
 
     public Barn(int id, String firstName, String lastName, String farthersName, String mothersName, Date dateOfBirth, String allergies
-            ,String picture) {
+            ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +26,7 @@ public class Barn {
         this.mothersName = mothersName;
         this.dateOfBirth = dateOfBirth;
         this.allergies = allergies;
-        this.picture = picture;
+
     }
 
     public int getId() {
@@ -86,13 +85,7 @@ public class Barn {
         this.allergies = allergies;
     }
 
-    public String getPicture(){
-        return picture;
-    }
 
-    public void setPicture(String picture){
-        this.picture = picture;
-    }
 
 
     @Override

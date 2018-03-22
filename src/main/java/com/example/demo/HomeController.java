@@ -8,12 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.Scanner;
 
 @Controller
@@ -31,7 +29,7 @@ public class HomeController {
 
         return "ledernsmenu";
     }
-      @GetMapping("/Medarbejdere")
+    @GetMapping("/Medarbejdere")
     public String Medarbejder(Model model) {
         model.addAttribute("MedarbejderArray", MedarbejderArray);
 
@@ -132,6 +130,9 @@ public class HomeController {
         return "redirect:/Visbarn";
     }
 
+
+
+
     public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException{
         PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
 
@@ -159,7 +160,7 @@ public class HomeController {
 
 
 
-    public ArrayList<Barn> getBarnArray() throws FileNotFoundException {
+    public ArrayList<Barn> getBarnArray() {
         ArrayList<Barn> barnArrayList = new ArrayList<>();
         try {
             Scanner scanner = new Scanner(new File("src/main/resources/child.txt"));
@@ -179,12 +180,35 @@ public class HomeController {
                 barn.setAllergies(readLine.next());
 
                 barnArrayList.add(barn);
-                saveToFile(barnArrayList);
-
             }
         } catch (FileNotFoundException e) {
         } finally {
             return barnArrayList;
         }
     }
+
+    public static void waitingList(Barn barn) {
+        ArrayList<Barn> venteliste = new ArrayList<>();
+        venteliste.add(barn);
+        ArrayUpdater(venteliste, barn);
+    }
+
+    public static void ArrayUpdater(ArrayList<Barn> venteListe, Barn barn) {
+        boolean moveKids = false;
+        ArrayList<Barn> barnArray = new ArrayList<>();
+        int i = barnArray.size();
+        int ID = 0;
+        barnArray.indexOf(30);
+
+        for (Barn b : barnArray) {
+            if (barnArray.size() >= 30) {
+                moveKids = true;
+                venteListe.add(b);
+
+
+            }
+        }
+
+    }
+
 }
