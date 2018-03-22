@@ -88,7 +88,6 @@ public class Barn {
 
 
 
-    @Override
     public String toString() {
         return id + "#" + firstName + "#" + lastName + "#" + farthersName + "#" + mothersName + "#" + dateOfBirth + "#" + allergies;
     }

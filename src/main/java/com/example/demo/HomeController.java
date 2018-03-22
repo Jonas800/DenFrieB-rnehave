@@ -8,19 +8,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 @Controller
 public class HomeController {
     ArrayList<Barn> barnArray = getBarnArray();
-    ArrayList<Medarbejder>MedarbejderArray= new ArrayList<>();
+    ArrayList<Medarbejder>MedarbejderArray= GetMedarbejder();
     int barnId = 0;
     int medArbejderId = 0;
-    public HomeController() throws FileNotFoundException {
+    public HomeController() throws FileNotFoundException, ParseException {
     }
 
     @GetMapping("/")
@@ -148,7 +151,7 @@ public class HomeController {
 
 
     public static void medArbejderToFile(ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException{
-        PrintStream stream = new PrintStream(new File("src/main/resources/medarbejder.txt"));
+        PrintStream stream = new PrintStream(new File("src/main/resources/ansatte.txt"));
         String e = "";
 
         for(Medarbejder m: MedarbejderArray){
@@ -185,6 +188,26 @@ public class HomeController {
         } finally {
             return barnArrayList;
         }
+    }
+
+    public ArrayList<Medarbejder> GetMedarbejder() throws FileNotFoundException {
+        ArrayList<Medarbejder> medarbejderArrayList = new ArrayList<>();
+        Scanner scan = new Scanner(new File("src/main/resources/ansatte.txt"));
+
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine();
+            Scanner readLine = new Scanner(line).useDelimiter("#");
+            Medarbejder medarbejder=new Medarbejder();
+            medarbejder.setId(readLine.nextInt());
+            medarbejder.setFirstName(readLine.next());
+            medarbejder.setLastName(readLine.next());
+            medarbejder.setAddress(readLine.next());
+            medarbejder.setTelephoneNumber(readLine.next());
+            medarbejder.setStilling(readLine.next());
+            medarbejderArrayList.add(medarbejder);
+
+        }
+    return medarbejderArrayList;
     }
 
     public static void waitingList(Barn barn) {
