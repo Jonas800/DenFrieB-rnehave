@@ -66,7 +66,10 @@ public class Medarbejder {
         Stilling = stilling;
     }
 
+    @Override
     public String toString() {
-        return "Medarbejder{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", address='" + address + '\'' + ", telephoneNumber='" + telephoneNumber + '\'' + ", Stilling='" + Stilling + '\'' + '}';
+        return  id + "#" + firstName+ "#" +  lastName + "#" + address + "#"+ telephoneNumber + "#" + Stilling;
     }
-}
+
+
+    }
