@@ -139,7 +139,11 @@ public class HomeController {
 
     @GetMapping("/SletBarn")
     public String sletChild(@RequestParam(value = "id", defaultValue = "0") int id) throws FileNotFoundException {
-        barnArray.remove(id - 1);
+        for(int i = 0; i < barnArray.size(); i++){
+            if(barnArray.get(i).getId() == id){
+                barnArray.remove(i);
+            }
+        }
         saveToFile(barnArray);
         return "redirect:/Visbarn";
     }
