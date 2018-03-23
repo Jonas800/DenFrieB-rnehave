@@ -94,7 +94,8 @@ public class HomeController {
 
     @PostMapping("/TilmeldBarn")
     public String TilmeldBarn(@ModelAttribute Barn barn) throws IOException {
-        int id = barnArray.size() + 1;
+        int lastIndex = barnArray.size()-1;
+        int id = barnArray.get(lastIndex).getId() + 1;
 
         barn.setId(id);
         barnArray.add(barn);
