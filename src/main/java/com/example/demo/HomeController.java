@@ -2,25 +2,22 @@ package com.example.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Random;
 import java.util.Scanner;
 
 @Controller
 public class HomeController {
     ArrayList<Barn> barnArray = getBarnArray();
     ArrayList<Medarbejder> MedarbejderArray = GetMedarbejder();
+    ArrayList<String> venteListe = new ArrayList<>();
+
     int barnId = 0;
     int medArbejderId = 0;
 
@@ -97,8 +94,7 @@ public class HomeController {
 
     @PostMapping("/TilmeldBarn")
     public String TilmeldBarn(@ModelAttribute Barn barn) throws IOException {
-        int lastIndex = barnArray.size() - 1;
-        int id = barnArray.get(lastIndex).getId() + 1;
+        int id = barnArray.size() + 1;
 
         barn.setId(id);
         barnArray.add(barn);
@@ -107,18 +103,28 @@ public class HomeController {
         return "redirect:/";
     }
 
+
     @GetMapping("/Visbarn")
     public String Visbarn(Model model) {
-        model.addAttribute("barnArray", barnArray);
-        return "Visbarn";
-    }
+        for (int i = 0; i <barnArray.size() ; i++) {
+
+            if (i <= 30) {
+                model.addAttribute("barnArray", barnArray.subList(0, barnArray.size()));
+                }
+
+else
+                model.addAttribute("barnArray", barnArray.subList(0,30));
+
+        }
+        return"Visbarn";
+}
 
     @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
         if (model != null) {
             for (Barn barn : barnArray) {
-                if(barn.getId() == id)
-                model.addAttribute("barn", barn);
+                if (barn.getId() == id)
+                    model.addAttribute("barn", barn);
             }
         }
         barnId = id;
@@ -128,8 +134,8 @@ public class HomeController {
     @PostMapping("/edit")
     public String editChild(@ModelAttribute Barn barn) throws FileNotFoundException {
         barn.setId(barnId);
-        for(int i = 0; i < barnArray.size(); i++){
-            if(barnArray.get(i).getId() == barn.getId()){
+        for (int i = 0; i < barnArray.size(); i++) {
+            if (barnArray.get(i).getId() == barn.getId()) {
                 barnArray.set(i, barn);
             }
         }
@@ -139,8 +145,8 @@ public class HomeController {
 
     @GetMapping("/SletBarn")
     public String sletChild(@RequestParam(value = "id", defaultValue = "0") int id) throws FileNotFoundException {
-        for(int i = 0; i < barnArray.size(); i++){
-            if(barnArray.get(i).getId() == id){
+        for (int i = 0; i < barnArray.size(); i++) {
+            if (barnArray.get(i).getId() == id) {
                 barnArray.remove(i);
             }
         }
@@ -222,28 +228,19 @@ public class HomeController {
         return medarbejderArrayList;
     }
 
-    public static void waitingList(Barn barn) {
-        ArrayList<Barn> venteliste = new ArrayList<>();
-        venteliste.add(barn);
-        ArrayUpdater(venteliste, barn);
-    }
+    @GetMapping("/Venteliste")
+    public String venteListe(Model model) {
+        for (int i = 0; i < barnArray.size(); i++) {
 
-    public static void ArrayUpdater(ArrayList<Barn> venteListe, Barn barn) {
-        boolean moveKids = false;
-        ArrayList<Barn> barnArray = new ArrayList<>();
-        int i = barnArray.size();
-        int ID = 0;
-        barnArray.indexOf(30);
+            if (i >= 30) {
 
-        for (Barn b : barnArray) {
-            if (barnArray.size() >= 30) {
-                moveKids = true;
-                venteListe.add(b);
-
-
+                model.addAttribute("barnArray", barnArray.subList(30, barnArray.size()));
             }
+
+
+
         }
+        return "Venteliste";
 
     }
-
 }

@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"><head>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="stylesheet" href="Custom.css">
+
 </head>
 <body>
+<header>
+    <nav>
+        <a href="TilmeldBarn">Tilmeld barn</a>
+        <a href="Visbarn">Vis børn</a>
+    </nav>
+</header>
+<div class="wrap">
+    <h2>Børn i Børnehaven</h2>
+    <a href="TilmeldBarn" class=".btn">
+        <button style="color:chartreuse"> Create</button>
+    </a>
+
+    <table>
+        <thead>
+        <tr>
+
+            <th>ID</th>
+            <th>Fornavn</th>
+            <th>Efternavn</th>
+            <th>Fars navn</th>
+            <th>Mors navn</th>
+            <th>Fødselsdato</th>
+            <th>Allergier</th>
+            <th></th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="barn: ${barnArray}">
+            <td th:text="${barn.id}"/>
+            <td th:text="${barn.firstName}"/>
+            <td th:text="${barn.lastName}"/>
+            <td th:text="${barn.farthersName}"/>
+            <td th:text="${barn.mothersName}"/>
+            <td th:text="${#dates.format(barn.dateOfBirth, 'dd-MM-yyyy')}"/>
+            <td th:text="${barn.allergies}"/>
+
+            <td>
+                <a th:href="@{'/edit?id='+${barn.id}}" class="knap">Rediger</a>
+                <a th:href="@{'/SletBarn?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')"
+                   class="knap">Slet</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>
