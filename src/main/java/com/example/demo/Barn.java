@@ -8,8 +8,6 @@ public class Barn {
     private int id;
     private String firstName;
     private String lastName;
-    private String farthersName;
-    private String mothersName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String allergies;
@@ -17,13 +15,11 @@ public class Barn {
     }
 
 
-    public Barn(int id, String firstName, String lastName, String farthersName, String mothersName, Date dateOfBirth, String allergies
+    public Barn(int id, String firstName, String lastName, Date dateOfBirth, String allergies
             ) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.farthersName = farthersName;
-        this.mothersName = mothersName;
         this.dateOfBirth = dateOfBirth;
         this.allergies = allergies;
 
@@ -53,22 +49,6 @@ public class Barn {
         this.lastName = lastName;
     }
 
-    public String getFarthersName() {
-        return farthersName;
-    }
-
-    public void setFarthersName(String farthersName) {
-        this.farthersName = farthersName;
-    }
-
-    public String getMothersName() {
-        return mothersName;
-    }
-
-    public void setMothersName(String mothersName) {
-        this.mothersName = mothersName;
-    }
-
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -89,6 +69,6 @@ public class Barn {
 
 
     public String toString() {
-        return id + "#" + firstName + "#" + lastName + "#" + farthersName + "#" + mothersName + "#" + dateOfBirth + "#" + allergies;
+        return id + "#" + firstName + "#" + lastName + "#" + dateOfBirth + "#" + allergies;
     }
 }

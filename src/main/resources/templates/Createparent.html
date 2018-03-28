@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>oplysninger på forældere</title>
+    <link rel="stylesheet" type="text/css" href="Style.css" />
+</head>
+
+<body>
+<h1> forælder</h1>
+<form method="Post" th:action="@{/Createparent}">
+
+    <label>fars navn: </label>
+    <input type="text" th:value="${parent.Farsnavn}" required="true"/>
+    <label>fars efternavn: </label>
+    <input type="text" th:value="${parent.FEfternavn}" required="true"/>
+    <label>adresse: </label>
+    <input type="text" th:value="${parent.Adresse}" required="true"/>
+    <label>opgang: </label>
+    <input type="text" th:value="${parent.Opgang}" required="true"/>
+    <label>post nummer: </label>
+    <input type="text" th:value="${parent.Postnummer}" required="true"/>
+    <label>fars Mobil: </label>
+    <input type="text" th:value="${parent.Ftelefon}" required="true"/>
+    <label>Mor navn: </label>
+    <input type="text" th:value="${parent.Morsnavn}" required="true"/>
+    <label>Mor efternavn: </label>
+    <input type="text" th:value="${parent.Mefternavn}" required="true"/>
+    <label>Mor Mobil: </label>
+    <input type="text" th:value="${parent.Morstelf}" required="true"/>
+    <input type="submit" value="Send"/>
+
+
+</form>
+<hr/>
+
+</form>
+</body>
+</html>

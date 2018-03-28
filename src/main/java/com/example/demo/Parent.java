@@ -1,147 +1,116 @@
 package com.example.demo;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.ArrayList;
-import java.util.Date;
-
 public class Parent {
-    private String firstName;
-    private String telephoneNumber;
-    private String type;
-    private int id;
-    private String lastName;
-    private int childId;
-    private static ArrayList<Parent> parents;
-    private static ArrayList<String> allergies;
-    private String picture;
-    private Date dateOfBirth;
+    private int ParentID;
+  private String Farsnavn;
+  private String FEfternavn;
+  private String Adresse;
+  private String Opgang;
+  private int Postnummer;
+  private int Ftelefon;
+  private String Morsnavn;
+  private String Mefternavn;
+  private String Morstelf;
+  public Parent(){
 
-    public Parent(String firstName, String telephoneNumber, String type, int id, String lastName, String picture
-            ,ArrayList<Parent> parents, ArrayList<String> allergies, Date dateOfBirth) {
-        this.firstName = firstName;
-        this.telephoneNumber = telephoneNumber;
-        this.type = type;
-        this.id = id;
-        this.lastName = lastName;
-        this.picture = picture;
-        this.parents = parents;
-        this.allergies = allergies;
-        this.dateOfBirth = dateOfBirth;
+  }
 
-}
-
-    public String getFirstName() {
-        return firstName;
+    public Parent(int ParentID, String Farsnavn, String FEfternavn, String Adresse, String Opgang, int Postnummer, int Ftelefon, String Morsnavn, String Mefternavn, String Morstelf) {
+        this.ParentID = ParentID;
+        this.Farsnavn = Farsnavn;
+        this.FEfternavn = FEfternavn;
+        this.Adresse = Adresse;
+        this.Opgang = Opgang;
+        this.Postnummer = Postnummer;
+        this.Ftelefon = Ftelefon;
+        this.Morsnavn = Morsnavn;
+        this.Mefternavn = Mefternavn;
+        this.Morstelf = Morstelf;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public int getParentID() {
+        return ParentID;
     }
 
-    public String getTelephoneNumber() {
-        return telephoneNumber;
+    public void setParentID(int ParentID) {
+        this.ParentID = ParentID;
     }
 
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+    public String getFarsnavn() {
+        return Farsnavn;
     }
 
-    public Parent() {
+    public void setFarsnavn(String farsnavn) {
+        Farsnavn = farsnavn;
     }
 
-    public Parent(String firstName, String telephoneNumber, String type, int id, String lastName, int childId) {
-        this.firstName = firstName;
-        this.telephoneNumber = telephoneNumber;
-        this.type = type;
-        this.id = id;
-        this.lastName = lastName;
-        this.childId = childId;
+    public String getFEfternavn() {
+        return FEfternavn;
     }
 
-    public int getChildId() {
-        return childId;
+    public void setFEfternavn(String FEfternavn) {
+        this.FEfternavn = FEfternavn;
     }
 
-    public void setChildId(int childId) {
-        this.childId = childId;
+    public String getAdresse() {
+        return Adresse;
     }
 
-
-        public int getId () {
-            return id;
-        }
-
-        public void setId ( int id){
-            this.id = id;
-        }
-
-    public String getType() {
-        return type;
+    public void setAdresse(String adresse) {
+        Adresse = adresse;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getOpgang() {
+        return Opgang;
     }
 
+    public void setOpgang(String opgang) {
+        Opgang = opgang;
+    }
 
+    public int getPostnummer() {
+        return Postnummer;
+    }
 
-        public String getLastName () {
-            return lastName;
-        }
+    public void setPostnummer(int postnummer) {
+        Postnummer = postnummer;
+    }
 
-        public void setLastName (String lastName){
-            this.lastName = lastName;
-        }
+    public int getFtelefon() {
+        return Ftelefon;
+    }
 
-        public static ArrayList<Parent> getParents () {
-            return parents;
-        }
+    public void setFtelefon(int ftelefon) {
+        Ftelefon = ftelefon;
+    }
 
-        public static void setParents (ArrayList < Parent > parents) {
-            Parent.parents = parents;
-        }
+    public String getMorsnavn() {
+        return Morsnavn;
+    }
 
-        public static ArrayList<String> getAllergies () {
-            return allergies;
-        }
+    public void setMorsnavn(String morsnavn) {
+        Morsnavn = morsnavn;
+    }
 
-        public static void setAllergies (ArrayList < String > allergies) {
-            Parent.allergies = allergies;
-        }
+    public String getMefternavn() {
+        return Mefternavn;
+    }
 
-        public String getPicture () {
-            return picture;
-        }
+    public void setMefternavn(String mefternavn) {
+        Mefternavn = mefternavn;
+    }
 
-        public void setPicture (String picture){
-            this.picture = picture;
-        }
+    public String getMorstelf() {
+        return Morstelf;
+    }
 
-        public Date getDateOfBirth () {
-            return dateOfBirth;
-        }
+    public void setMorstelf(String morstelf) {
+        Morstelf = morstelf;
+    }
 
-        public void setDateOfBirth (Date dateOfBirth){
-            this.dateOfBirth = dateOfBirth;
-        }
-
-
-        @Override
-        public String toString () {
-            return "Parent{" +
-                    "firstName='" + firstName + '\'' +
-                    ", telephoneNumber='" + telephoneNumber + '\'' +
-                    ", type='" + type + '\'' +
-                    ", id=" + id +
-                    ", lastName='" + lastName + '\'' +
-                    ", picture='" + picture + '\'' +
-                    ", dateOfBirth=" + dateOfBirth +
-                    '}';
-        }
-
-
-
-
+    @Override
+    public String toString() {
+        return  ParentID + "#" + Farsnavn + "#" + FEfternavn +"#" + Adresse+"#" + Opgang+"#" + Postnummer +"#"+ Ftelefon +"#"+ Morsnavn +"#"+ Mefternavn+"#" +  Morstelf;
+    }
 }
 

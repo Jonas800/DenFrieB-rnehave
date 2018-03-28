@@ -2,9 +2,15 @@ package com.example.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,8 +22,7 @@ import java.util.Scanner;
 public class HomeController {
     ArrayList<Barn> barnArray = getBarnArray();
     ArrayList<Medarbejder> MedarbejderArray = GetMedarbejder();
-    ArrayList<String> venteListe = new ArrayList<>();
-
+    ArrayList<Parent>ParentArray = new ArrayList<>();
     int barnId = 0;
     int medArbejderId = 0;
 
@@ -55,16 +60,15 @@ public class HomeController {
         medarbejder.setId(ID);
         MedarbejderArray.add(medarbejder);
         medArbejderToFile(MedarbejderArray);
-
-        return "redirect:/";
+        return "Createparent";
     }
 
     @GetMapping("/editEMP")
     public String editEmp(@RequestParam(value = "ID", defaultValue = "1") int ID, Model model) {
+        medArbejderId = ID;
         if (model != null) {
             model.addAttribute("medarbejder", MedarbejderArray.get(ID - 1));
         }
-        medArbejderId = ID;
         return "editEMP";
     }
 
@@ -73,7 +77,6 @@ public class HomeController {
         medarbejder.setId(medArbejderId);
         MedarbejderArray.set(medArbejderId - 1, medarbejder);
         medArbejderToFile(MedarbejderArray);
-
         return "redirect:/";
     }
 
@@ -88,6 +91,7 @@ public class HomeController {
     @GetMapping("/TilmeldBarn")
     public String TilmeldBarn(Model model) {
         model.addAttribute("barn", new Barn());
+
         return "TilmeldBarn";
 
     }
@@ -100,24 +104,23 @@ public class HomeController {
         barnArray.add(barn);
         saveToFile(barnArray);
 
-        return "redirect:/";
-    }
+        return "redirect:/Createparent"; }
 
 
-    @GetMapping("/Visbarn")
+        @GetMapping("/Visbarn")
     public String Visbarn(Model model) {
         for (int i = 0; i <barnArray.size() ; i++) {
 
             if (i <= 30) {
                 model.addAttribute("barnArray", barnArray.subList(0, barnArray.size()));
-                }
+            }
 
-else
+            else
                 model.addAttribute("barnArray", barnArray.subList(0,30));
 
         }
         return"Visbarn";
-}
+    }
 
     @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
@@ -154,8 +157,44 @@ else
         return "redirect:/Visbarn";
     }
 
+    @GetMapping("/Venteliste")
+    public String venteListe(Model model) {
+        for (int i = 0; i < barnArray.size(); i++) {
 
-    public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException {
+            if (i >= 30) {
+
+                model.addAttribute("barnArray", barnArray.subList(30, barnArray.size()));
+            }
+
+        }
+        return "Venteliste"; }
+
+
+    @GetMapping("/Createparent")
+    public String Createparent(Model model) {
+        model.addAttribute("parent", new Parent());
+        return "Createparent";
+
+    }
+
+    @PostMapping("/Createparent")
+    public String Createparent(@ModelAttribute Parent parent)  {
+        int id = ParentArray.size() + 1;
+
+        parent.setParentID(id);
+        ParentArray.add(parent);
+
+        return "redirect:/"; }
+
+    @GetMapping("/Visforrældre")
+    public String visforældre (Model model){
+        model.addAttribute("parentArray", ParentArray);
+        return "Visforældre";
+    }
+
+
+
+        public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException {
         PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
 
         String s = "";
@@ -167,6 +206,7 @@ else
 
 
     }
+
 
 
     public static void medArbejderToFile(ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException {
@@ -193,8 +233,6 @@ else
                 barn.setId(readLine.nextInt());
                 barn.setFirstName(readLine.next());
                 barn.setLastName(readLine.next());
-                barn.setFarthersName(readLine.next());
-                barn.setMothersName(readLine.next());
                 DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy");
                 Date dateOfBirth = (df.parse(readLine.next()));
                 barn.setDateOfBirth(dateOfBirth);
@@ -228,19 +266,5 @@ else
         return medarbejderArrayList;
     }
 
-    @GetMapping("/Venteliste")
-    public String venteListe(Model model) {
-        for (int i = 0; i < barnArray.size(); i++) {
 
-            if (i >= 30) {
-
-                model.addAttribute("barnArray", barnArray.subList(30, barnArray.size()));
-            }
-
-
-
-        }
-        return "Venteliste";
-
-    }
 }

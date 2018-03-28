@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="Style.css"/>
+    <link rel="stylesheet" href="Custom.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="tilføjMA">Tilføj ansat</a>
+    </nav>
+</header>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Farsnavn</th>
+        <th>far efternavn</th>
+        <th> adresse</th>
+        <th>opgang</th>
+        <th>Postnummer</th>
+        <th>far Mobil</th>
+        <th>morsnavn</th>
+        <th>mor efternavn</th>
+        <th>Mor mobil</th>
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr th:each="parent: ${parentArray}">
+        <td th:text="${parent.id}"/>
+        <td th:text="${parent.Farsnavn}"/>
+        <td th:text="${parent.FEfthernavn}"/>
+        <td th:text="${parent.Adresse}"/>
+        <td th:text="${parent.Opgang}"/>
+        <td th:text="${parent.Postnummer}"/>
+        <td th:text="${parent.Morsnavn}"/>
+        <td th:text="${parent.Mefternavn}"/>
+        <td th:text="${parent.Morstelf}"/>
+
+        <td>
+
+        <td>
+            <a th:href="@{'/editEMP?ID='+${medarbejder.id}}" class="knap">Rediger</a>
+
+
+    </tr>
+    </tbody>
+</table>
+</div>
+
+</body>
+</html>

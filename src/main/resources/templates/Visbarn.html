@@ -24,11 +24,9 @@
             <th>ID</th>
             <th>Fornavn</th>
             <th>Efternavn</th>
-            <th>Fars navn</th>
-            <th>Mors navn</th>
             <th>Fødselsdato</th>
             <th>Allergier</th>
-            <th></th>
+            <th>Options</th>
 
         </tr>
         </thead>
@@ -38,12 +36,11 @@
             <td th:text="${barn.id}"/>
             <td th:text="${barn.firstName}"/>
             <td th:text="${barn.lastName}"/>
-            <td th:text="${barn.farthersName}"/>
-            <td th:text="${barn.mothersName}"/>
             <td th:text="${#dates.format(barn.dateOfBirth, 'dd-MM-yyyy')}"/>
             <td th:text="${barn.allergies}"/>
 
             <td>
+                <a th:href="@{'/edit?id='+${barn.id}}" class="knap">detailjer</a>
                 <a th:href="@{'/edit?id='+${barn.id}}" class="knap">Rediger</a>
                 <a th:href="@{'/SletBarn?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')"
                    class="knap">Slet</a>
