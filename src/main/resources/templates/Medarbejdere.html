@@ -12,41 +12,41 @@
 </header>
 
 
-    <table>
-        <thead>
-        <tr>
-            <th>id</th>
-            <th>Fornavn</th>
-            <th>Efternavn</th>
-            <th> adresse</th>
-            <th>Telefon.nr</th>
-            <th>Stilling</th>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th> adresse</th>
+        <th>Telefon.nr</th>
+        <th>Stilling</th>
 
 
 
-        </tr>
-        </thead>
-        <tbody>
+    </tr>
+    </thead>
+    <tbody>
 
 
-        <tr th:each="medarbejder: ${MedarbejderArray}">
-            <td th:text="${medarbejder.id}"/>
-            <td th:text="${medarbejder.firstName}"/>
-            <td th:text="${medarbejder.lastName}"/>
-            <td th:text="${medarbejder.address}"/>
-            <td th:text="${medarbejder.telephoneNumber}"/>
-            <td th:text="${medarbejder.Stilling}"/>
+    <tr th:each="medarbejder: ${MedarbejderArray}">
+        <td th:text="${medarbejder.id}"/>
+        <td th:text="${medarbejder.firstName}"/>
+        <td th:text="${medarbejder.lastName}"/>
+        <td th:text="${medarbejder.address}"/>
+        <td th:text="${medarbejder.telephoneNumber}"/>
+        <td th:text="${medarbejder.Stilling}"/>
 
-            <td>
-                <a th:href="@{'/editEMP?ID='+${medarbejder.id}}" class="knap">Rediger</a>
-                <a th:href="@{'/Sletansat?ID='+${medarbejder.id}}" onclick="return confirm('Bekræft sletning')"
-                   class="knap">Slet</a>
+        <td>
+            <a th:href="@{'/editEMP?ID='+${medarbejder.id}}" class="knap">Rediger</a>
+            <a th:href="@{'/Sletansat?ID='+${medarbejder.id}}" onclick="return confirm('Bekræft sletning')"
+               class="knap">Slet</a>
 
-            </td>
+        </td>
 
-        </tr>
-        </tbody>
-    </table>
+    </tr>
+    </tbody>
+</table>
 </div>
 
 </body>
