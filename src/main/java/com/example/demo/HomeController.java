@@ -22,7 +22,11 @@ import java.util.Scanner;
 public class HomeController {
     ArrayList<Barn> barnArray = getBarnArray();
     ArrayList<Medarbejder> MedarbejderArray = GetMedarbejder();
+<<<<<<< HEAD
     ArrayList<Parent>ParentArray = new ArrayList<>();
+=======
+
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
     int barnId = 0;
     int medArbejderId = 0;
 
@@ -107,8 +111,13 @@ public class HomeController {
         return "redirect:/Createparent"; }
 
 
+<<<<<<< HEAD
         @GetMapping("/Visbarn")
     public String Visbarn(Model model) {
+=======
+    @GetMapping("/Visbarn")
+    public String Visbarn(Model model) throws FileNotFoundException {
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
         for (int i = 0; i <barnArray.size() ; i++) {
 
             if (i <= 30) {
@@ -120,6 +129,7 @@ public class HomeController {
 
         }
         return"Visbarn";
+<<<<<<< HEAD
     }
 
     @GetMapping("/edit")
@@ -128,35 +138,28 @@ public class HomeController {
             for (Barn barn : barnArray) {
                 if (barn.getId() == id)
                     model.addAttribute("barn", barn);
+=======
+        @GetMapping("/SletBarn")
+        public String sletChild(@RequestParam(value = "id", defaultValue = "0") int id) throws FileNotFoundException {
+            for (int i = 0; i < barnArray.size(); i++) {
+                if (barnArray.get(i).getId() == id) {
+                    barnArray.remove(i);
+                }
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
             }
+            saveToFile(barnArray);
+            return "redirect:/Visbarn";
         }
-        barnId = id;
-        return "edit";
-    }
+        @GetMapping("/vagtplan")
+        public String Vagtplan(){
 
-    @PostMapping("/edit")
-    public String editChild(@ModelAttribute Barn barn) throws FileNotFoundException {
-        barn.setId(barnId);
-        for (int i = 0; i < barnArray.size(); i++) {
-            if (barnArray.get(i).getId() == barn.getId()) {
-                barnArray.set(i, barn);
-            }
+
+            return ("vagtplan");
         }
-        saveToFile(barnArray);
-        return "redirect:/";
-    }
+        public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException {
+            PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
 
-    @GetMapping("/SletBarn")
-    public String sletChild(@RequestParam(value = "id", defaultValue = "0") int id) throws FileNotFoundException {
-        for (int i = 0; i < barnArray.size(); i++) {
-            if (barnArray.get(i).getId() == id) {
-                barnArray.remove(i);
-            }
-        }
-        saveToFile(barnArray);
-        return "redirect:/Visbarn";
-    }
-
+<<<<<<< HEAD
     @GetMapping("/Venteliste")
     public String venteListe(Model model) {
         for (int i = 0; i < barnArray.size(); i++) {
@@ -196,39 +199,82 @@ public class HomeController {
 
         public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException {
         PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
+=======
+            String s = "";
+            for (Barn c : barnArray) {
+                s += c.toString() + "\r\n";
+            }
+            ps.print(s);
+            ps.close();
 
-        String s = "";
-        for (Barn c : barnArray) {
-            s += c.toString() + "\r\n";
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
+
         }
-        ps.print(s);
-        ps.close();
 
 
-    }
+        public static void medArbejderToFile(ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException {
+            PrintStream stream = new PrintStream(new File("src/main/resources/ansatte.txt"));
+            String e = "";
 
+            for (Medarbejder m : MedarbejderArray) {
+                e += m.toString() + "\r\n";
+            }
+            stream.print(e);
+            stream.close();
+        }
 
+<<<<<<< HEAD
 
     public static void medArbejderToFile(ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException {
         PrintStream stream = new PrintStream(new File("src/main/resources/ansatte.txt"));
         String e = "";
+=======
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
 
-        for (Medarbejder m : MedarbejderArray) {
-            e += m.toString() + "\r\n";
+        public ArrayList<Barn> getBarnArray() {
+            ArrayList<Barn> barnArrayList = new ArrayList<>();
+            try {
+                Scanner scanner = new Scanner(new File("src/main/resources/child.txt"));
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    Scanner readLine = new Scanner(line).useDelimiter("#");
+
+                    Barn barn = new Barn();
+                    barn.setId(readLine.nextInt());
+                    barn.setFirstName(readLine.next());
+                    barn.setLastName(readLine.next());
+                    barn.setFarthersName(readLine.next());
+                    barn.setMothersName(readLine.next());
+                    DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy");
+                    Date dateOfBirth = (df.parse(readLine.next()));
+                    barn.setDateOfBirth(dateOfBirth);
+                    barn.setAllergies(readLine.next());
+
+                    barnArrayList.add(barn);
+                }
+            } catch (FileNotFoundException e) {
+            } finally {
+                return barnArrayList;
+            }
         }
-        stream.print(e);
-        stream.close();
-    }
 
+        public ArrayList<Medarbejder> GetMedarbejder() throws FileNotFoundException {
+            ArrayList<Medarbejder> medarbejderArrayList = new ArrayList<>();
+            Scanner scan = new Scanner(new File("src/main/resources/ansatte.txt"));
 
-    public ArrayList<Barn> getBarnArray() {
-        ArrayList<Barn> barnArrayList = new ArrayList<>();
-        try {
-            Scanner scanner = new Scanner(new File("src/main/resources/child.txt"));
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
                 Scanner readLine = new Scanner(line).useDelimiter("#");
+                Medarbejder medarbejder = new Medarbejder();
+                medarbejder.setId(readLine.nextInt());
+                medarbejder.setFirstName(readLine.next());
+                medarbejder.setLastName(readLine.next());
+                medarbejder.setAddress(readLine.next());
+                medarbejder.setTelephoneNumber(readLine.next());
+                medarbejder.setStilling(readLine.next());
+                medarbejderArrayList.add(medarbejder);
 
+<<<<<<< HEAD
                 Barn barn = new Barn();
                 barn.setId(readLine.nextInt());
                 barn.setFirstName(readLine.next());
@@ -239,32 +285,34 @@ public class HomeController {
                 barn.setAllergies(readLine.next());
 
                 barnArrayList.add(barn);
+=======
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
             }
-        } catch (FileNotFoundException e) {
-        } finally {
-            return barnArrayList;
+            return medarbejderArrayList;
         }
-    }
 
-    public ArrayList<Medarbejder> GetMedarbejder() throws FileNotFoundException {
-        ArrayList<Medarbejder> medarbejderArrayList = new ArrayList<>();
-        Scanner scan = new Scanner(new File("src/main/resources/ansatte.txt"));
+        @GetMapping("/Venteliste")
+        public String venteListe(Model model) {
+            for (int i = 0; i < barnArray.size(); i++) {
 
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine();
-            Scanner readLine = new Scanner(line).useDelimiter("#");
-            Medarbejder medarbejder = new Medarbejder();
-            medarbejder.setId(readLine.nextInt());
-            medarbejder.setFirstName(readLine.next());
-            medarbejder.setLastName(readLine.next());
-            medarbejder.setAddress(readLine.next());
-            medarbejder.setTelephoneNumber(readLine.next());
-            medarbejder.setStilling(readLine.next());
-            medarbejderArrayList.add(medarbejder);
-
+<<<<<<< HEAD
         }
         return medarbejderArrayList;
     }
 
 
 }
+=======
+                if (i >= 30) {
+
+                    model.addAttribute("barnArray", barnArray.subList(30, barnArray.size()));
+                }
+
+
+
+            }
+            return "Venteliste";
+
+        }
+    }
+>>>>>>> 3b217fef70ddec59a19d6ad0c3787d9bdb5c5578
