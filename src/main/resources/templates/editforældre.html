@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>oplysninger på forældere</title>
-    <link rel="stylesheet" type="text/css" href="Style.css" />
+    <meta charset="UTF-8"/>
+    <title>Vis forældre</title>
+    <link rel="stylesheet" href="Custom.css"/>
+    <link rel="stylesheet" href="Style.css"/>
+
 </head>
-
 <body>
-<h1> forælder</h1>
-<form method="Post" th:action="@{/Createparent}">
 
+<hr/>
+<form method="post" th:action="@{/editforældre}">
     <label>fars navn: </label>
     <input type="text" th:field="${Parent.Farsnavn}" required="true"/>
     <label>fars efternavn: </label>
@@ -27,11 +29,10 @@
     <input type="text" th:field="${Parent.Mefternavn}" required="true"/>
     <label>Mor Mobil: </label>
     <input type="number" th:field="${Parent.Morstelf}" required="true"/>
-    <input type="submit" value="Send"/>
+    <input type="submit" value="tilbage">
 
 
-</form>
-<hr/>
+    <hr/>
 
 </form>
 </body>

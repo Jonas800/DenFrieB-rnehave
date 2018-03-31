@@ -40,10 +40,10 @@
             <td th:text="${barn.allergies}"/>
 
             <td>
-                <a th:href="@{'/edit?id='+${barn.id}}" class="knap">detailjer</a>
                 <a th:href="@{'/edit?id='+${barn.id}}" class="knap">Rediger</a>
-                <a th:href="@{'/SletBarn?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')"
-                   class="knap">Slet</a>
+                <a th:href="@{'/SletBarn?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')" class="knap">Slet</a>
+                <a href="Visforældre" class="knap"> vis forældre info</a>
+
 
             </td>
         </tr>

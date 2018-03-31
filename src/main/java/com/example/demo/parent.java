@@ -10,12 +10,12 @@ public class Parent {
   private int Ftelefon;
   private String Morsnavn;
   private String Mefternavn;
-  private String Morstelf;
+  private int Morstelf;
   public Parent(){
 
   }
 
-    public Parent(int ParentID, String Farsnavn, String FEfternavn, String Adresse, String Opgang, int Postnummer, int Ftelefon, String Morsnavn, String Mefternavn, String Morstelf) {
+    public Parent(int ParentID, String Farsnavn, String FEfternavn, String Adresse, String Opgang, int Postnummer, int Ftelefon, String Morsnavn, String Mefternavn, int Morstelf) {
         this.ParentID = ParentID;
         this.Farsnavn = Farsnavn;
         this.FEfternavn = FEfternavn;
@@ -28,12 +28,13 @@ public class Parent {
         this.Morstelf = Morstelf;
     }
 
+
     public int getParentID() {
         return ParentID;
     }
 
-    public void setParentID(int ParentID) {
-        this.ParentID = ParentID;
+    public void setParentID(int parentID) {
+        ParentID = parentID;
     }
 
     public String getFarsnavn() {
@@ -100,15 +101,14 @@ public class Parent {
         Mefternavn = mefternavn;
     }
 
-    public String getMorstelf() {
+    public int getMorstelf() {
         return Morstelf;
     }
 
-    public void setMorstelf(String morstelf) {
+    public void setMorstelf(int morstelf) {
         Morstelf = morstelf;
     }
 
-    @Override
     public String toString() {
         return  ParentID + "#" + Farsnavn + "#" + FEfternavn +"#" + Adresse+"#" + Opgang+"#" + Postnummer +"#"+ Ftelefon +"#"+ Morsnavn +"#"+ Mefternavn+"#" +  Morstelf;
     }
