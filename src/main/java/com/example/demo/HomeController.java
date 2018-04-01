@@ -21,14 +21,13 @@ import java.util.Scanner;
 public class HomeController {
     ArrayList<Barn> barnArray = getBarnArray();
     ArrayList<Medarbejder> MedarbejderArray = GetMedarbejder();
-    ArrayList<Parent>ParentArray =getParentArray();
+    ArrayList<Parent> ParentArray = getParentArray();
     int barnId = 0;
     int medArbejderId = 0;
-    int ParentID=0;
+    int ParentID = 0;
+
     public HomeController() throws FileNotFoundException {
     }
-
-
 
 
     @GetMapping("/")
@@ -39,25 +38,31 @@ public class HomeController {
     }
 
     @GetMapping("/loginside")
-    public String login () {
+    public String login() {
 
         return "loginside";
     }
 
     @PostMapping("/loginside")
-    public String usernamepassword(@RequestParam("username")  String username , @RequestParam("password") String password){
-        login leder= new login("admin","password");
+    public String usernamepassword(@RequestParam("username") String username, @RequestParam("password") String password) throws FileNotFoundException {
+        login leder = new login("admin", "admin");
+        PrintStream w = new PrintStream(new File("src/main/resources/password.txt"));
 
 
-        if ((leder.getUsername() == username) || (leder.getPassword() == password)){
 
-            return "ledernsmenu";
-        }
-         else
+        if (leder.getPassword().equals(username) && password.equals(leder.getPassword())) {
+            w.print(username +" "+ leder.getUsername() + " " + password + " " +  leder.getPassword() );
+            w.close();
+                return "ledernsmenu";
 
-             return "loginside";
+                }
+
+            return "loginside";
 
     }
+
+
+
     @GetMapping("/ledernsmenu")
     public String ledernsmenu(Model model) {
         model.addAttribute("barnArray", barnArray);

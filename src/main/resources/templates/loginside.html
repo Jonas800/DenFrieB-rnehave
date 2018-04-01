@@ -10,8 +10,10 @@
 <body>
 <form method="Post" th:action="@{/loginside}">
     <label>username</label>
->    <label>username</label>
-    <input type="password" th:action="${password}" required="true"/>
+    <input type="text" name="username">
+    <label>password</label>
+    <input type="text" name="password">
+
     <input type="submit" value="login">
 
 </form>
