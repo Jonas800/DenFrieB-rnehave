@@ -28,11 +28,41 @@ public class HomeController {
     public HomeController() throws FileNotFoundException {
     }
 
+
+
+
     @GetMapping("/")
+    public String forside(Model model) {
+        model.addAttribute("barnArray", barnArray);
+
+        return "forside";
+    }
+
+    @GetMapping("/loginside")
+    public String login () {
+
+        return "loginside";
+    }
+
+    @PostMapping("/loginside")
+    public String usernamepassword(@RequestParam("username")  String username , @RequestParam("password") String password){
+        login leder= new login("admin","password");
+
+
+        if ((leder.getUsername() == username) || (leder.getPassword() == password)){
+
+            return "ledernsmenu";
+        }
+         else
+
+             return "loginside";
+
+    }
+    @GetMapping("/ledernsmenu")
     public String ledernsmenu(Model model) {
         model.addAttribute("barnArray", barnArray);
 
-        return "ledernsmenu";
+        return "redirect:/";
     }
 
     @GetMapping("/Medarbejdere")
