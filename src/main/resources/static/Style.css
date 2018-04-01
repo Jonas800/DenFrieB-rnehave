@@ -1,7 +1,10 @@
 body {
-    font-family: arial, sans-serif;
+    background-color: darkcyan;
     margin: 0;
     padding: 0;
+    color: darkcyan;">
+    font-family: arial, sans-serif;
+
 }
 
 .container {
