@@ -137,7 +137,7 @@ public class HomeController {
         barnArray.add(barn);
         saveToFile(barnArray);
 
-        return "redirect:/Visbarn";
+        return "redirect:/Createparent";
     }
 
 
@@ -173,7 +173,7 @@ public class HomeController {
 
 
         saveToFile(barnArray);
-        return "redirect:/";
+        return "redirect:/Visbarn";
     }
 
     @GetMapping("/SletBarn")
@@ -219,20 +219,20 @@ public class HomeController {
         return "redirect:/Visbarn";
     }
 
-    @GetMapping("/Visforældre")
-    public String visforældre(@RequestParam(value = "ParentID", defaultValue = "1") int id, Model model) throws FileNotFoundException {
-        if (model != null) {
-            model.addAttribute("Parent", ParentArray.get(id - 1));
+    @GetMapping("/Visbarn")
+    public String visforældre (@RequestParam(value = "id", defaultValue = "1") int id, Model model){
+        if (model!=null){
+            model.addAttribute("Parent",ParentArray.get(id-1));
 
         }
-        ParentID = id;
+        ParentID=id;
         return "Visforældre";
     }
 
     @PostMapping("/Visforældre")
-    public String Visforældre(@ModelAttribute Parent Parent) throws FileNotFoundException {
-        Parent.setParentID(ParentID);
-        ParentArray.set(ParentID - 1, Parent);
+    public String Visforældre(@ModelAttribute Parent parent) throws FileNotFoundException {
+        parent.setParentID(ParentID);
+        ParentArray.set(ParentID-1,parent);
         partentstofile(ParentArray);
 
         return "redirect:/Visbarn";
@@ -269,10 +269,10 @@ public class HomeController {
         String S = "";
         for (Parent p : ParentArray) {
             S += p.toString() + "\r\n";
-            w.print(S);
-            w.close();
-        }
 
+        }
+        w.print(S);
+        w.close();
     }
 
     public ArrayList<Barn> getBarnArray() {
