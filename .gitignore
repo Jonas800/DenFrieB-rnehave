@@ -25,3 +25,4 @@ nbdist/
 src/main/resources/templates/boern.html
 child.txt
 src/main/java/com/example/demo/HomeController.java
+src/main/resources/static/ledernsmenu.css

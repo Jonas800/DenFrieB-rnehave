@@ -20,13 +20,13 @@ import java.util.Scanner;
 @Controller
 public class HomeController {
     ArrayList<Barn> barnArray = getBarnArray();
-    ArrayList<Medarbejder> MedarbejderArray = new ArrayList<>();
-    ArrayList<Parent> ParentArray = new ArrayList<>();
+    ArrayList<Medarbejder> MedarbejderArray = GetMedarbejder();
+    ArrayList<Parent> ParentArray = getParentArray();
     int barnId = 0;
     int medArbejderId = 0;
     int ParentID = 0;
 
-    public HomeController()  {
+    public HomeController() throws FileNotFoundException {
     }
 
 
@@ -49,9 +49,8 @@ public class HomeController {
         PrintStream w = new PrintStream(new File("src/main/resources/password.txt"));
 
 
-
         if (leder.getPassword().equals(username) && password.equals(leder.getPassword())) {
-            w.print(username +" "+ leder.getUsername() + " " + password + " " +  leder.getPassword() );
+            w.print(username + " " + leder.getUsername() + " " + password + " " + leder.getPassword());
             w.close();
             return "ledernsmenu";
 
@@ -60,7 +59,6 @@ public class HomeController {
         return "loginside";
 
     }
-
 
 
     @GetMapping("/ledernsmenu")
@@ -73,7 +71,6 @@ public class HomeController {
 
     @GetMapping("/Medarbejdere")
     public String Medarbejder(Model model) throws FileNotFoundException {
-        GetMedarbejder(MedarbejderArray);
         model.addAttribute("MedarbejderArray", MedarbejderArray);
 
         return "Medarbejdere";
@@ -96,7 +93,7 @@ public class HomeController {
         medarbejder.setId(ID);
         MedarbejderArray.add(medarbejder);
         medArbejderToFile(MedarbejderArray);
-        return "redirect:/";
+        return "redirect:/Medarbejdere";
     }
 
     @GetMapping("/editEMP")
@@ -113,14 +110,14 @@ public class HomeController {
         medarbejder.setId(medArbejderId);
         MedarbejderArray.set(medArbejderId - 1, medarbejder);
         medArbejderToFile(MedarbejderArray);
-        return "redirect:/";
+        return "redirect:/Medarbejdere";
     }
 
     @GetMapping("/Sletansat")
     public String Sletansat(@RequestParam(value = "ID", defaultValue = "0") int ID) throws FileNotFoundException {
         MedarbejderArray.remove(ID - 1);
         medArbejderToFile(MedarbejderArray);
-        return "redirect:/";
+        return "redirect:/Medarbejdere";
     }
 
 
@@ -140,23 +137,21 @@ public class HomeController {
         barnArray.add(barn);
         saveToFile(barnArray);
 
-        return "redirect:/Createparent";  }
-
+        return "redirect:/Visbarn";
+    }
 
 
     @GetMapping("/Visbarn")
     public String Visbarn(Model model) {
-        for (int i = 0; i <barnArray.size() ; i++) {
+        for (int i = 0; i < barnArray.size(); i++) {
 
             if (i <= 30) {
                 model.addAttribute("barnArray", barnArray.subList(0, barnArray.size()));
-            }
-
-            else
-                model.addAttribute("barnArray", barnArray.subList(0,30));
+            } else
+                model.addAttribute("barnArray", barnArray.subList(0, 30));
 
         }
-        return"Visbarn";
+        return "Visbarn";
     }
 
     @GetMapping("/edit")
@@ -173,8 +168,8 @@ public class HomeController {
 
     @PostMapping("/edit")
     public String editChild(@ModelAttribute Barn barn) throws FileNotFoundException {
-        barnArray.get(barnId -1);
-        barnArray.set(barnId-1,barn);
+        barnArray.get(barnId - 1);
+        barnArray.set(barnId - 1, barn);
 
 
         saveToFile(barnArray);
@@ -203,7 +198,8 @@ public class HomeController {
             }
 
         }
-        return "Venteliste"; }
+        return "Venteliste";
+    }
 
 
     @GetMapping("/Createparent")
@@ -220,27 +216,26 @@ public class HomeController {
         Parent.setParentID(id);
         ParentArray.add(Parent);
         partentstofile(ParentArray);
-        return "redirect:/";
+        return "redirect:/Visbarn";
     }
 
     @GetMapping("/Visforældre")
-    public String visforældre (@RequestParam(value = "ParentID", defaultValue = "1") int id, Model model) throws FileNotFoundException {
-        getParentArray(ParentArray);
-        if (model!=null){
-            model.addAttribute("Parent",ParentArray.get(id-1));
+    public String visforældre(@RequestParam(value = "ParentID", defaultValue = "1") int id, Model model) throws FileNotFoundException {
+        if (model != null) {
+            model.addAttribute("Parent", ParentArray.get(id - 1));
 
         }
-        ParentID=id;
+        ParentID = id;
         return "Visforældre";
     }
 
     @PostMapping("/Visforældre")
     public String Visforældre(@ModelAttribute Parent Parent) throws FileNotFoundException {
         Parent.setParentID(ParentID);
-        ParentArray.set(ParentID-1,Parent);
+        ParentArray.set(ParentID - 1, Parent);
         partentstofile(ParentArray);
 
-        return "redirect:/";
+        return "redirect:/Visbarn";
     }
 
 
@@ -258,7 +253,6 @@ public class HomeController {
     }
 
 
-
     public static void medArbejderToFile(ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException {
         PrintStream stream = new PrintStream(new File("src/main/resources/ansatte.txt"));
         String e = "";
@@ -269,11 +263,12 @@ public class HomeController {
         stream.print(e);
         stream.close();
     }
-    public static void partentstofile (ArrayList<Parent>ParentArray) throws FileNotFoundException {
+
+    public static void partentstofile(ArrayList<Parent> ParentArray) throws FileNotFoundException {
         PrintStream w = new PrintStream(new File("src/main/resources/Parents.txt"));
-        String S="";
-        for (Parent p:ParentArray) {
-            S +=p.toString()+ "\r\n";
+        String S = "";
+        for (Parent p : ParentArray) {
+            S += p.toString() + "\r\n";
             w.print(S);
             w.close();
         }
@@ -305,7 +300,8 @@ public class HomeController {
         }
     }
 
-    public void GetMedarbejder( ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException {
+    public ArrayList<Medarbejder> GetMedarbejder() throws FileNotFoundException {
+        ArrayList<Medarbejder> medarbejderArrayList = new ArrayList<>();
         Scanner scan = new Scanner(new File("src/main/resources/ansatte.txt"));
 
         while (scan.hasNextLine()) {
@@ -318,19 +314,20 @@ public class HomeController {
             medarbejder.setAddress(readLine.next());
             medarbejder.setTelephoneNumber(readLine.next());
             medarbejder.setStilling(readLine.next());
-            MedarbejderArray.add(medarbejder);
+            medarbejderArrayList.add(medarbejder);
 
         }
-
+        return medarbejderArrayList;
     }
 
-    public void getParentArray(ArrayList<Parent> ParentArray) throws FileNotFoundException {
-        Scanner scan= new Scanner(new File("src/main/resources/Parents.txt"));
+    public ArrayList<Parent> getParentArray() throws FileNotFoundException {
+        Scanner scan = new Scanner(new File("src/main/resources/Parents.txt"));
 
-        while(scan.hasNextLine()){
-            String line=scan.nextLine();
-            Scanner read=new Scanner(line).useDelimiter("#");
-            Parent Parent= new Parent();
+        ArrayList<Parent> ParentArraylist = new ArrayList<>();
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine();
+            Scanner read = new Scanner(line).useDelimiter("#");
+            Parent Parent = new Parent();
             Parent.setParentID(read.nextInt());
             Parent.setFarsnavn(read.next());
             Parent.setFEfternavn(read.next());
@@ -342,9 +339,10 @@ public class HomeController {
             Parent.setMefternavn(read.next());
             Parent.setMorstelf(read.nextInt());
 
-            ParentArray.add(Parent);
+            ParentArraylist.add(Parent);
 
         }
+        return ParentArraylist;
     }
 
 }
