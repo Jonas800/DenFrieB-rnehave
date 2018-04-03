@@ -219,14 +219,15 @@ public class HomeController {
         return "redirect:/Visbarn";
     }
 
-    @GetMapping("/Visbarn")
+    @GetMapping("/Visforældre" )
     public String visforældre (@RequestParam(value = "id", defaultValue = "1") int id, Model model){
         if (model!=null){
             model.addAttribute("Parent",ParentArray.get(id-1));
 
         }
-        ParentID=id;
+        ParentID=barnId;
         return "Visforældre";
+
     }
 
     @PostMapping("/Visforældre")
