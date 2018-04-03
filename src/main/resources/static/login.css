@@ -39,19 +39,19 @@ button:hover {
 /* Center the avatar image inside this container */
 .imgcontainer {
     text-align: center;
-    margin: 14px 0 10px 0;
+    margin: 140px 0 10px 0;
 }
 
 
 /* Avatar image */
 img.avatar {
-    width: 25%;
-    border-radius: 50%;
+    width: 30%;
+    border-radius: 10%;
 }
 
 /* Add padding to containers */
 .container {
-    padding: 16px;
+    padding: 8px;
 }
 
 /* The "Forgot password" text */
