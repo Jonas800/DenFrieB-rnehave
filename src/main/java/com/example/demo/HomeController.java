@@ -156,12 +156,11 @@ public class HomeController {
 
     @GetMapping("/edit")
     public String editChild(@RequestParam(value = "id", defaultValue = "1") int id, Model model) {
-        if (model != null) {
             for (Barn barn : barnArray) {
                 if (barn.getId() == id)
                     model.addAttribute("barn", barn);
             }
-        }
+
         barnId = id;
         return "edit";
     }
@@ -184,6 +183,7 @@ public class HomeController {
                 ParentArray.remove(i);
             }
         }
+        partentstofile(ParentArray);
         saveToFile(barnArray);
         return "redirect:/Visbarn";
     }
@@ -214,21 +214,30 @@ public class HomeController {
         int id = ParentArray.size() + 1;
 
         Parent.setParentID(id);
-        ParentArray.add(Parent);
+        ParentArray.add(Parent) ;
         partentstofile(ParentArray);
         return "redirect:/Visbarn";
     }
 
-    @GetMapping("/Visforældre" )
-    public String visforældre (@RequestParam(value = "id", defaultValue = "1") int id, Model model){
-        if (model!=null){
-            model.addAttribute("Parent",ParentArray.get(id-1));
+    @GetMapping("/Visforældre")
+    public String visforældre (@RequestParam(value = "ParentID", defaultValue = "1") int id, Model model){
+        for (Barn  barn: barnArray) {
+            if (barn.getId()==id) {
+                model.addAttribute("Parent", ParentArray.get(barn.getId() -1));
 
+            }
         }
-        ParentID=barnId;
+
+
+
         return "Visforældre";
 
     }
+
+
+
+
+
 
     @PostMapping("/Visforældre")
     public String Visforældre(@ModelAttribute Parent parent) throws FileNotFoundException {
@@ -238,7 +247,6 @@ public class HomeController {
 
         return "redirect:/Visbarn";
     }
-
 
     public static void saveToFile(ArrayList<Barn> barnArray) throws FileNotFoundException {
         PrintStream ps = new PrintStream(new File("src/main/resources/child.txt"));
@@ -250,9 +258,7 @@ public class HomeController {
         ps.print(s);
         ps.close();
 
-
-    }
-
+        }
 
     public static void medArbejderToFile(ArrayList<Medarbejder> MedarbejderArray) throws FileNotFoundException {
         PrintStream stream = new PrintStream(new File("src/main/resources/ansatte.txt"));

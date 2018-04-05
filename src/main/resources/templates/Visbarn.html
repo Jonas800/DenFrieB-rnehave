@@ -13,6 +13,7 @@
 </header>
 <div class="wrap">
     <h2>Børn i Børnehaven</h2>
+    <a href="TilmeldBarn" class=".btn">
         <button style="color:chartreuse"> Create</button>
     </a>
 
@@ -41,8 +42,7 @@
             <td>
                 <a th:href="@{'/edit?id='+${barn.id}}" class="knap">Rediger</a>
                 <a th:href="@{'/SletBarn?id='+${barn.id}}" onclick="return confirm('Bekræft sletning')" class="knap">Slet</a>
-                <a href="Visforældre" class="knap"> vis forældre info</a>
-
+                <a th:href="@{'/editforældre?id='+${Parent.ParentID}}" class="knap">forældre info</a>
 
             </td>
         </tr>

@@ -1,7 +1,0 @@
-1#bob#jorhan#vigerslevalle#23232425#pædagog
-2#jorhan#hansen#amagergade#31343231#pædagog
-3#harambe#karambe#frederiksborgvej#23232425#pædagog
-4#pia#andersen#tangesvej#23232425#pædagog
-5#lone#olsen#frederiksssundsvej#23232425#pædagog
-6#erick#skov#tuborgvej#23232425#pædagog
-7#meyer#pedersen#christianshavn#23232425#pædagog
