@@ -307,6 +307,7 @@ public class HomeController {
         }
     }
     //hhej
+    //hejhej
     public ArrayList<Medarbejder> GetMedarbejder() throws FileNotFoundException {
         ArrayList<Medarbejder> medarbejderArrayList = new ArrayList<>();
         Scanner scan = new Scanner(new File("src/main/resources/ansatte.txt"));
